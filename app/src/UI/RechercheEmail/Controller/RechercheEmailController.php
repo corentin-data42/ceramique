@@ -9,8 +9,9 @@ use App\UI\RechercheEmail\DTO\Mapper\FormuleSegerConversionRecetteCommandMapper;
 use App\Repository\DoctrineOxydeRepository;
 use App\Repository\DoctrineMatierePremiereRepository;
 use App\Repository\DoctrineMatierePremiereOxydeRepository;
-use App\Repository\RepositoryQueryAdaptateur;
-use App\Repository\RepositoryCommandAdaptateur;
+
+use App\UI\Repository\RepositoryQueryAdaptateur;
+use App\UI\Repository\RepositoryCommandAdaptateur;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

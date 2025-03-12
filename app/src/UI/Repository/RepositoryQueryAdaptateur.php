@@ -1,5 +1,5 @@
 <?php
-namespace App\Repository;
+namespace App\UI\Repository;
 use Application\Repository\Port\RepositoryQueryPort;
 use App\Entity\DoctrineOxyde;
 use App\Repository\DoctrineOxydeRepository;

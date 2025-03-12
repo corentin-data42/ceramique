@@ -9,5 +9,5 @@ Framework:
     Symfony 7.2
 
 Architecture:
-    Hexagonal
+    DDD/Hexagonal
     CQRS

@@ -1,0 +1,9 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+recherche-email:
+    # loads routes from the PHP annotations of the controllers found in that directory
+    resource: '../src/UI/RechercheEmail/Controller/'
+    type: attribute

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste des oxydes{% endblock %}
+
+{% block body %}
+<p>
+    liste des oxydes :
+</p>
+<a class="btn btn-sm btn-primary" href={{ path('oxyde.create')}}>Créer un nouvel oxyde</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Oxyde</th>
+            <th>Formule</th>
+            <th>type</th>
+            <th>actif</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for oxyde in oxydes %}
+            <tr>
+                <td>
+                    <a href={{ path('oxyde.show',{ id:oxyde.id }) }}>{{ oxyde.nom }}</a>
+                </td>
+                <td>
+                    {{ oxyde.formule }}
+                </td>
+                <td>
+                    {{ oxyde.type }}
+                </td>
+                <td>
+                    {{ oxyde.actif }}
+                </td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-sm btn-primary" href={{ path('oxyde.edit',{ id:oxyde.id })}}>Modifier</a>
+                        <form action="{{ path('oxyde.remove',{ id:oxyde.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-sm btn-danger" >Supprimer</a>
+                        </form>
+                    </div>
+                    
+                </td>
+                
+            </tr>
+    {% endfor %}
+    </tbody
+    
+
+</table>
+{% endblock %}

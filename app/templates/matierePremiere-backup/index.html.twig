@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste des materiaux{% endblock %}
+
+{% block body %}
+<p>
+    liste des materiaux :
+</p>
+<a class="btn btn-sm btn-primary" href={{ path('materiaux.create')}}>Créer un nouvel materiau</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>materiaux</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for materiau in materiaux %}
+            <tr>
+                <td>
+                    <a href={{ path('materiaux.show',{ id:materiau.id }) }}>{{ materiau.libelle }}</a>
+                </td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-sm btn-primary" href={{ path('materiaux.edit',{ id:materiau.id })}}>Modifier</a>
+                        <form action="{{ path('materiaux.remove',{ id:materiau.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-sm btn-danger" >Supprimer</a>
+                        </form>
+                    </div>
+                    
+                </td>
+                
+            </tr>
+    {% endfor %}
+    </tbody
+    
+
+</table>
+{% endblock %}

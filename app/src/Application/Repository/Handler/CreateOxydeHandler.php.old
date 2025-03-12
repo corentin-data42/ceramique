@@ -1,0 +1,21 @@
+<?php
+    namespace Application\Handler;
+
+    use Application\Command\CreateOxydeCommand;
+    use Application\Port\Database\OxydeDatabasePort;
+    use Domain\Entity\Oxyde;
+
+    class CreateOxydeHandler{
+
+        public function __construct(
+            protected OxydeDatabasePort $databasePort
+        ){   
+        }
+
+         public function handle(CreateOxydeCommand $command):Oxyde{
+            $oxyde = new Oxyde();
+
+            $this->databasePort->save($oxyde, true);
+            return $oxyde;
+        }
+    }

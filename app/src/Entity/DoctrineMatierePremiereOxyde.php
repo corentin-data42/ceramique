@@ -1,0 +1,68 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\DoctrineMatierePremiereOxydeRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: DoctrineMatierePremiereOxydeRepository::class)]
+#[ORM\Table(name: 'tl_matiere_premiere_oxyde')]
+class DoctrineMatierePremiereOxyde
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\ManyToOne(inversedBy: 'oxyde')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?DoctrineMatierePremiere $matierePremiere = null;
+
+    #[ORM\ManyToOne(inversedBy: 'doctrineMatierePremiereOxydes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?DoctrineOxyde $oxyde = null;
+
+    #[ORM\Column]
+    private ?float $quantite = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getMatierePremiere(): ?DoctrineMatierePremiere
+    {
+        return $this->matierePremiere;
+    }
+
+    public function setMatierePremiere(?DoctrineMatierePremiere $matierePremiere): static
+    {
+        $this->matierePremiere = $matierePremiere;
+
+        return $this;
+    }
+
+    public function getOxyde(): ?DoctrineOxyde
+    {
+        return $this->oxyde;
+    }
+
+    public function setOxyde(?DoctrineOxyde $oxyde): static
+    {
+        $this->oxyde = $oxyde;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?float
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(float $quantite): static
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+}

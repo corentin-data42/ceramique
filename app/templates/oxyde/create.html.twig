@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Creation d'un oxyde" %}
+
+{% block body %}
+<h1>Créér un nouvel oxyde</h1>
+{{ form_start(form) }}
+<div class="d-flex">
+    {{ form_row(form.nom) }}
+     {{ form_row(form.formule) }}
+</div>
+<div class="d-flex">
+    {{ form_row(form.pm) }}
+     {{ form_row(form.type) }}
+</div>
+{{ form_end(form) }}
+{% endblock %}

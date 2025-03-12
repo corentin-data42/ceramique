@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Edition du materiaux " ~ materiaux.libelle %}
+
+{% block body %}
+<h1>Edition de l'oxyde {{ materiaux.libelle }}</h1>
+{{ form_start(form) }}
+<div class="d-flex">
+    {{ form_row(form.libelle) }}
+     {{ form_row(form.libelleCour) }}
+</div>
+<div class="d-flex">
+    {{ form_row(form.pm) }}
+</div>
+{{ form_end(form) }}
+{% endblock %}

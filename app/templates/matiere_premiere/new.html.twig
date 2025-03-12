@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une matière première{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une matière première</h1>
+
+    {{ include('matiere_premiere/_form.html.twig') }}
+
+    <a href="{{ path('matiere_premiere.index') }}">back to list</a>
+{% endblock %}

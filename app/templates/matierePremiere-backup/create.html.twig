@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Creation d'un materiaux" %}
+
+{% block body %}
+<h1>Créér un nouvel materiaux</h1>
+{{ form_start(form) }}
+<div class="d-flex">
+    {{ form_row(form.libelle) }}
+     {{ form_row(form.libelleCour) }}
+</div>
+<div class="d-flex">
+    {{ form_row(form.pm) }}
+</div>
+{{ form_end(form) }}
+{% endblock %}

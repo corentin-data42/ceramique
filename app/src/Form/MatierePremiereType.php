@@ -9,8 +9,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Event\PostSubmitEvent;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormEvents;
 
 class MatierePremiereType extends AbstractType
@@ -22,7 +24,16 @@ class MatierePremiereType extends AbstractType
             ->add('formule')
             ->add('pmAvantCuisson')
             ->add('ordre')
-            ->add('active')
+            ->add('active',CheckboxType::class,[
+                'required'=>false,
+                'attr'=>[
+                    'class'=>'btn-check',
+                    'autocomplete'=>"off",
+                    'empty_data'=>false,
+                    
+                ],
+                'label_attr' => ['class' => 'btn btn-outline-success']
+            ])
             ->add('quantite', CollectionType::class, [
                 'label'=>'Oxydes',
                 'entry_type' => MatierePremiereOxydeQuantiteType::class,

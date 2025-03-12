@@ -28,8 +28,8 @@ class MatierePremiere
     #[ORM\Column(nullable: true)]
     private ?int $ordre = null;
 
-    #[ORM\Column]
-    private ?bool $active = null;
+    #[ORM\Column()]
+    private bool $active = false;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $creationAt = null;

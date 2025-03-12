@@ -3,11 +3,22 @@
 {% block title %}Edition de l'a matière première {{ matierepremiere.nom }}{% endblock %}
 
 {% block body %}
+    {{ dump( form) }}
     <h1>Edition de l'a matière première {{ matierepremiere.nom }}</h1>
     {{ form_start(form) }}
-    <div class="d-flex">
-        {{ form_row(form.nom) }}
-        {{ form_row(form.formule) }}
+    <div class="row form-matiere-premiere">
+        <div class="col-md-8">
+            {{ form_row(form.nom) }}
+            {{ form_row(form.formule) }}
+            {{ form_row(form.pmAvantCuisson) }}
+            {{ form_row(form.ordre) }}
+            {{ form_row(form.active) }}
+        </div>
+        <div class="col-md-4">
+            <div class="row quantite-oxyde">
+                {{ form_row(form.quantite) }}
+            </div>
+        </div>
     </div>
     {{ form_end(form) }}
 {% endblock %}

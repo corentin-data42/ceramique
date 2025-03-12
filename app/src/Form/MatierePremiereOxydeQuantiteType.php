@@ -8,6 +8,7 @@ use App\Entity\Oxyde;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,9 +20,18 @@ class MatierePremiereOxydeQuantiteType extends AbstractType
             
             ->add('oxyde', EntityType::class, [
                 'class' => Oxyde::class,
-                'choice_label' => 'nom',
+                'label'=>' ',
+                'choice_label' => 'formule',
+                'attr'=>[
+                    'label'=>'',
+                ]
             ])
-            ->add('quantite')
+            ->add('quantite',NumberType::class,[
+                'attr'=>[
+                    
+                ]
+            ]
+            )
         ;
     }
 

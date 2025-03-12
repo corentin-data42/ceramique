@@ -1,1 +1,16 @@
 
+.form-matiere-premiere .quantite-oxyde fieldset:first-child BUTTON{
+    float:right;
+    margin-bottom:.1rem;
+}
+.form-matiere-premiere .quantite-oxyde fieldset:first-child .mb-3 LABEL{
+    display:block;
+    width:5em;
+    padding: .375rem .75rem;
+    float:left;
+}
+.form-matiere-premiere .quantite-oxyde fieldset:first-child .mb-3 INPUT{
+    float:left;
+    width:10em;
+}
+

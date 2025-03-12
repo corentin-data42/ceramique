@@ -33,7 +33,8 @@ class MatierePremiereType extends AbstractType
                 'attr'=>[
                     'data-controller'=>'form-collection',
                     'data-form-collection-add-label-value'=>'Ajouter un Oxyde',
-                    'data-form-collection-delete-label-value'=>'Supprime',
+                    'data-form-collection-delete-label-value'=>'X',
+
                 ]
             ])
             ->add('save',SubmitType::class,[

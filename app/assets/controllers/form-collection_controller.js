@@ -11,7 +11,7 @@ export default class extends Controller {
         console.log('form_collection controller connect')
         this.index = this.element.childElementCount
         const btn = document.createElement('button')
-        btn.setAttribute('class','btn btn-secondary')
+        btn.setAttribute('class','btn btn-sm btn-primary')
         
         btn.innerText= this.addLabelValue || 'Ajouter un élément'
         btn.setAttribute('type','button')
@@ -40,10 +40,10 @@ export default class extends Controller {
 
     addDeleteBtn = (item) => {
         const btn = document.createElement('button')
-        btn.setAttribute('class','btn btn-secondary')
+        btn.setAttribute('class','btn btn-sm btn-danger')
         btn.innerText = this.deleteLabelValue || 'Supprimer un élément'
         btn.setAttribute('type','button')
-        item.append(btn)
+        item.prepend(btn)
         btn.addEventListener('click',e=>{
             e.preventDefault()
             item.remove()

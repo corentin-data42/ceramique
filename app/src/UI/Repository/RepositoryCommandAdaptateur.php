@@ -3,15 +3,15 @@
 use Application\Repository\Port\RepositoryCommandPort;
 use Application\Repository\DTO\OxydeDTO;
 
-use App\Repository\DoctrineOxydeRepository;
-use App\Repository\DoctrineMatierePremiereRepository;
-use App\Repository\DoctrineMatierePremiereOxydeRepository;
+use App\Repository\OxydeRepository;
+use App\Repository\MatierePremiereRepository;
+use App\Repository\MatierePremiereOxydeQuantiteRepository;
 
 class RepositoryCommandAdaptateur implements RepositoryCommandPort{
     public function __construct(
-        private DoctrineOxydeRepository $oxydeRepository,
-        private DoctrineMatierePremiereRepository $matierePremiereRepository,
-        private DoctrineMatierePremiereOxydeRepository $matierePremiereOxydeRepository
+        private OxydeRepository $oxydeRepository,
+        private MatierePremiereRepository $matierePremiereRepository,
+        private MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository
     )
     {
         //parent::__construct($registry, DoctrineOxyde::class);

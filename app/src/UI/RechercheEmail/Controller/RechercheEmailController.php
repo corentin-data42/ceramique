@@ -6,9 +6,9 @@ use App\UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
 use App\UI\RechercheEmail\Form\FormuleSegerType;
 use App\UI\RechercheEmail\DTO\Mapper\FormuleSegerConversionRecetteCommandMapper;
 
-use App\Repository\DoctrineOxydeRepository;
-use App\Repository\DoctrineMatierePremiereRepository;
-use App\Repository\DoctrineMatierePremiereOxydeRepository;
+use App\Repository\OxydeRepository;
+use App\Repository\MatierePremiereRepository;
+use App\Repository\MatierePremiereOxydeQuantiteRepository;
 
 use App\UI\Repository\RepositoryQueryAdaptateur;
 use App\UI\Repository\RepositoryCommandAdaptateur;
@@ -41,24 +41,34 @@ final class RechercheEmailController extends AbstractController
     #[Route('/recherche-email/conversion-formule-seger-recette', name: 'recherche-email.conv-seger-recette')]
     public function convSegerRecette(
             Request $request, 
-            DoctrineOxydeRepository $oxydeRepository,
-            DoctrineMatierePremiereRepository $matierePremiereRepository , 
-            DoctrineMatierePremiereOxydeRepository $matierePremiereOxyde
+            OxydeRepository $oxydeRepository,
+            MatierePremiereRepository $matierePremiereRepository , 
+            MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository
             
             
         ):Response{
-        $repositoryQueryPort = new RepositoryQueryAdaptateur(
+        /* 
+            initialisation des repository[Query/Command]adaptateur
+            qui utilisent les interfaces repository[Query/Command]Port 
+            definies dans la couche application
+        */
+        $repositoryQueryAdaptateur = new RepositoryQueryAdaptateur(
             $oxydeRepository,
             $matierePremiereRepository,
-            $matierePremiereOxyde
+            $matierePremiereOxydeQuantiteRepository
         );
-        $repositoryCommandPort = new RepositoryCommandAdaptateur(
+        $repositoryCommandAdaptateur = new RepositoryCommandAdaptateur(
             $oxydeRepository,
             $matierePremiereRepository,
-            $matierePremiereOxyde
+            $matierePremiereOxydeQuantiteRepository
         );
-       
-        $adaptateur = RechercheEmailAdaptateur::getInstance($repositoryCommandPort,$repositoryQueryPort);
+
+        /* 
+            initialisation de RechercheEmailAdaptateur
+            qui utilise l'interfaces RechercheEmailPort 
+            definies dans la couche application
+        */
+        $adaptateur = RechercheEmailAdaptateur::getInstance($repositoryCommandAdaptateur,$repositoryQueryAdaptateur);
         
         $validator = Validation::createValidator();
 

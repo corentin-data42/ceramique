@@ -14,11 +14,11 @@ class DoctrineMatierePremiereOxyde
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'oxyde')]
+    #[ORM\ManyToOne(inversedBy: 'DoctrineMatierePremiere')]
     #[ORM\JoinColumn(nullable: false)]
     private ?DoctrineMatierePremiere $matierePremiere = null;
 
-    #[ORM\ManyToOne(inversedBy: 'doctrineMatierePremiereOxydes')]
+    #[ORM\ManyToOne(inversedBy: 'DoctrineOxyde')]
     #[ORM\JoinColumn(nullable: false)]
     private ?DoctrineOxyde $oxyde = null;
 

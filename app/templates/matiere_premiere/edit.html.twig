@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Matière première{% endblock %}
+{% block title %}Edition de l'a matière première {{ matierepremiere.nom }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Matière première</h1>
-
-    {{ include('matiere_premiere/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('matiere_premiere.index') }}">back to list</a>
-
-    {{ include('matiere_premiere/_delete_form.html.twig') }}
+    <h1>Edition de l'a matière première {{ matierepremiere.nom }}</h1>
+    {{ form_start(form) }}
+    <div class="d-flex">
+        {{ form_row(form.nom) }}
+        {{ form_row(form.formule) }}
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

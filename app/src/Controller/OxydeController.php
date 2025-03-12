@@ -7,14 +7,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\DoctrineOxydeRepository;
-use App\Entity\DoctrineOxyde;
-use App\Form\DoctrineOxydeType;
+use App\Repository\OxydeRepository;
+use App\Entity\Oxyde;
+use App\Form\OxydeType;
 
-final class DoctrineOxydeController extends AbstractController
+final class OxydeController extends AbstractController
 {
     #[Route('/oxyde', name: 'oxyde.index')]
-    public function index(DoctrineOxydeRepository $repository): Response
+    public function index(OxydeRepository $repository): Response
     {
         $oxydes = $repository->findAll();
         return $this->render('oxyde/index.html.twig',[
@@ -24,8 +24,8 @@ final class DoctrineOxydeController extends AbstractController
 
     #[Route('/oxyde/create', name: 'oxyde.create')]
     public function create(Request $request, EntityManagerInterface $em): Response {
-        $oxyde = new DoctrineOxyde();
-        $form = $this->createForm(DoctrineOxydeType::class,$oxyde);
+        $oxyde = new Oxyde();
+        $form = $this->createForm(OxydeType::class,$oxyde);
         $form->handleRequest($request);
         
         if ($form->isSubmitted()){
@@ -50,9 +50,9 @@ final class DoctrineOxydeController extends AbstractController
     }
 
     #[Route("/oxyde/{id}/edit",name:"oxyde.edit", requirements:['id'=>'\d+'], methods:['POST','GET'])]
-    public function edit(DoctrineOxyde $oxyde, Request $request, EntityManagerInterface $em): Response {
+    public function edit(Oxyde $oxyde, Request $request, EntityManagerInterface $em): Response {
         
-        $form = $this->createForm(DoctrineOxydeType::class,$oxyde);
+        $form = $this->createForm(OxydeType::class,$oxyde);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
@@ -69,7 +69,7 @@ final class DoctrineOxydeController extends AbstractController
     }
 
     #[Route('/oxyde/{id}/remove', name: 'oxyde.remove', requirements:['id'=>'\d+'], methods:['DELETE'])]
-    public function remove(DoctrineOxyde $oxyde, EntityManagerInterface $em): Response
+    public function remove(Oxyde $oxyde, EntityManagerInterface $em): Response
     {
         $em->remove($oxyde);
         $em->flush();

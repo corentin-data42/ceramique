@@ -61,12 +61,12 @@ class DoctrineOxyde
     /**
      * @var Collection<int, DoctrineMatierePremiereOxyde>
      */
-    // #[ORM\OneToMany(targetEntity: DoctrineMatierePremiereOxyde::class, mappedBy: 'oxyde', orphanRemoval: true)]
-    // private Collection $matiere;
+    #[ORM\OneToMany(targetEntity: DoctrineMatierePremiereOxyde::class, mappedBy: 'oxyde', orphanRemoval: true)]
+    private Collection $quantites;
 
     public function __construct()
     {
-        //$this->oxydes = new ArrayCollection();
+        $this->quantites = new ArrayCollection();
     }
 
     public function setId(int $id): static
@@ -179,30 +179,30 @@ class DoctrineOxyde
     /**
      * @return Collection<int, DoctrineMatierePremiereOxyde>
      */
-    // public function getOxydes(): Collection
-    // {
-    //     return $this->oxydes;
-    // }
+    public function getQuantites(): Collection
+    {
+        return $this->quantites;
+    }
 
-    // public function addOxyde(DoctrineMatierePremiereOxyde $oxyde): static
-    // {
-    //     if (!$this->oxydes->contains($oxyde)) {
-    //         $this->oxydes->add($oxyde);
-    //         $oxyde->setOxyde($this);
-    //     }
+    public function addOxyde(DoctrineMatierePremiereOxyde $quantite): static
+    {
+        if (!$this->quantites->contains($quantite)) {
+            $this->quantites->add($quantite);
+            $quantite->setOxyde($this);
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function removeOxyde(DoctrineMatierePremiereOxyde $oxyde): static
-    // {
-    //     if ($this->oxydes->removeElement($oxyde)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($oxyde->getOxyde() === $this) {
-    //             $oxyde->setOxyde(null);
-    //         }
-    //     }
+    public function removeOxyde(DoctrineMatierePremiereOxyde $quantite): static
+    {
+        if ($this->quantites->removeElement($quantite)) {
+            // set the owning side to null (unless already changed)
+            if ($quantite->getOxyde() === $this) {
+                $quantite->setOxyde(null);
+            }
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 }

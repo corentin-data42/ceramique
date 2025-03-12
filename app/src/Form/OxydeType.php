@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\DoctrineOxyde;
+use App\Entity\Oxyde;
 use Symfony\Component\Form\Event\PostSubmitEvent;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DoctrineOxydeType extends AbstractType
+class OxydeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -41,7 +41,7 @@ class DoctrineOxydeType extends AbstractType
 
     public function attachTimestamps(PostSubmitEvent $event):void{
         $data=$event->getData();
-        if(!($data instanceof DoctrineOxyde)){
+        if(!($data instanceof Oxyde)){
             return;
         }
         // data est de type Oxyde
@@ -54,7 +54,7 @@ class DoctrineOxydeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => DoctrineOxyde::class,
+            'data_class' => Oxyde::class,
         ]);
     }
 }

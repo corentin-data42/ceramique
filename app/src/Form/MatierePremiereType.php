@@ -2,16 +2,18 @@
 
 namespace App\Form;
 
-use App\Entity\DoctrineMatierePremiere;
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\Event\PostSubmitEvent;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Entity\MatierePremiere;
+
+use App\Form\MatierePremiereOxydeQuantiteType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Event\PostSubmitEvent;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\FormEvents;
 
-class DoctrineMatierePremiereType extends AbstractType
+class MatierePremiereType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -21,9 +23,9 @@ class DoctrineMatierePremiereType extends AbstractType
             ->add('pmAvantCuisson')
             ->add('ordre')
             ->add('active')
-            ->add('oxydes', CollectionType::class, [
+            ->add('quantite', CollectionType::class, [
                 'label'=>'Oxydes',
-                'entry_type' => DoctrineMatierePremiereOxydeQuantiteType::class,
+                'entry_type' => MatierePremiereOxydeQuantiteType::class,
                 'by_reference' =>false,
                 'allow_add' =>true,
                 'allow_delete' =>true,
@@ -42,7 +44,7 @@ class DoctrineMatierePremiereType extends AbstractType
     }
     public function attachTimestamps(PostSubmitEvent $event):void{
         $data=$event->getData();
-        if(!($data instanceof DoctrineMatierePremiere)){
+        if(!($data instanceof MatierePremiere)){
             return;
         }
         // data est de type Oxyde
@@ -54,7 +56,7 @@ class DoctrineMatierePremiereType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => DoctrineMatierePremiere::class,
+            'data_class' => MatierePremiere::class,
         ]);
     }
 }

@@ -3,48 +3,5 @@
 {% block title %}Matière première{% endblock %}
 
 {% block body %}
-    <h1>DoctrineMatierePremiere</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ doctrine_matiere_premiere.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ doctrine_matiere_premiere.nom }}</td>
-            </tr>
-            <tr>
-                <th>Formule</th>
-                <td>{{ doctrine_matiere_premiere.formule }}</td>
-            </tr>
-            <tr>
-                <th>PmAvantCuisson</th>
-                <td>{{ doctrine_matiere_premiere.pmAvantCuisson }}</td>
-            </tr>
-            <tr>
-                <th>Ordre</th>
-                <td>{{ doctrine_matiere_premiere.ordre }}</td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td>{{ doctrine_matiere_premiere.active ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>CreationAt</th>
-                <td>{{ doctrine_matiere_premiere.creationAt ? doctrine_matiere_premiere.creationAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>ModificationAt</th>
-                <td>{{ doctrine_matiere_premiere.modificationAt ? doctrine_matiere_premiere.modificationAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('matiere_premiere.index') }}">back to list</a>
-
-    <a href="{{ path('matiere_premiere.edit', {'id': doctrine_matiere_premiere.id}) }}">edit</a>
-
-    {{ include('matiere_premiere/_delete_form.html.twig') }}
+Affichage de la matière première id : {{ id }}
 {% endblock %}

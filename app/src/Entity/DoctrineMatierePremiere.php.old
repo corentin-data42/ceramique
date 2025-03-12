@@ -41,11 +41,11 @@ class DoctrineMatierePremiere
      * @var Collection<int, DoctrineMatierePremiereOxyde>
      */
     #[ORM\OneToMany(targetEntity: DoctrineMatierePremiereOxyde::class, mappedBy: 'matierePremiere', orphanRemoval: true, cascade: ['persist'])]
-    public Collection $oxydes;
+    public Collection $quantiteOxydes;
 
     public function __construct()
     {
-        $this->oxydes = new ArrayCollection();
+        $this->quantiteOxydes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -139,30 +139,29 @@ class DoctrineMatierePremiere
     /**
      * @return Collection<int, DoctrineMatierePremiereOxyde>
      */
-    public function getOxydes(): Collection
+    public function getQuantiteOxydes(): Collection
     {
-        return $this->oxydes;
+        return $this->quantiteOxydes;
     }
 
-    public function addOxydes(DoctrineMatierePremiereOxyde $oxyde): static
+    public function addQuantiteOxydes(DoctrineMatierePremiereOxyde $quantiteOxyde): static
     {
-        if (!$this->oxydes->contains($oxyde)) {
-            $this->oxydes->add($oxyde);
-            //$oxyde->setMatierePremiere($this);
+        if (!$this->quantiteOxydes->contains($quantiteOxyde)) {
+            $this->quantiteOxydes->add($quantiteOxyde);
+            $quantiteOxyde->setMatierePremiere($this);
         }
 
         return $this;
     }
 
-    public function removeOxydes(DoctrineMatierePremiereOxyde $oxyde): static
+    public function removeQuantiteOxydes(DoctrineMatierePremiereOxyde $quantiteOxyde): static
     {
-        if ($this->oxydes->removeElement($oxyde)) {
+        if ($this->quantiteOxydes->removeElement($quantiteOxyde)) {
             // set the owning side to null (unless already changed)
-            // if ($oxyde->getMatierePremiere() === $this) {
-            //     $oxyde->setMatierePremiere(null);
-            // }
+            if ($quantiteOxyde->getMatierePremiere() === $this) {
+                $quantiteOxyde->setMatierePremiere(null);
+            }
         }
-
         return $this;
     }
 }

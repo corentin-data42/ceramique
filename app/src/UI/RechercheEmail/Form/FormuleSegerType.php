@@ -4,9 +4,7 @@ namespace App\UI\RechercheEmail\Form;
 use App\UI\RechercheEmail\Form\OxydeFormuleSegerType;
 use App\UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
 
-use App\Entity\DoctrineMatierePremiere;
-use App\Entity\DoctrineMatierePremiereOxyde;
-use App\Entity\DoctrineOxyde;
+
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

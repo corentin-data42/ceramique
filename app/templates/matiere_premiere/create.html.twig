@@ -5,7 +5,10 @@
 {% block body %}
     <h1>Ajouter une matière première</h1>
 
-    {{ include('matiere_premiere/_form.html.twig') }}
-
-    <a href="{{ path('matiere_premiere.index') }}">back to list</a>
+{{ form_start(form) }}
+<div class="d-flex">
+    {{ form_row(form.nom) }}
+     {{ form_row(form.formule) }}
+</div>
+{{ form_end(form) }}
 {% endblock %}

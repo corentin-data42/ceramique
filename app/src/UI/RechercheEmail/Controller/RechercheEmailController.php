@@ -88,7 +88,7 @@ final class RechercheEmailController extends AbstractController
             $command = $mapper->requestToCommandDTO($request);
             $adaptateur->convSegerRecette($command);
         }elseif($form->isSubmitted()){
-            $this->addFlash('error','erreur');
+            $this->addFlash('danger',$form->getErrors(true)->offsetGet(0)->getMessage());
         }
         
 

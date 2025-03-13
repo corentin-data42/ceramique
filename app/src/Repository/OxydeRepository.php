@@ -21,6 +21,14 @@ class OxydeRepository extends ServiceEntityRepository
     public function findOneById(int $id){
 
     }
+    public function findById(array $arrId,?bool $actifOnly=true):array{
+        $qb = $this->createQueryBuilder('p')
+                    ->where("p.id IN(:Ids)")
+                    ->setParameter('Ids', array_values($arrId))
+                    ->andWhere('p.actif = '.$actifOnly );
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
     public function findAllActif(): array{
         //$entityManager = $this->getEntityManager();
         return $this->findBy(

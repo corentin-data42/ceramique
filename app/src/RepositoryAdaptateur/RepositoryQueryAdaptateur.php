@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 use App\DTO\Mapper\OxydeDTOMapper;
+use App\DTO\Mapper\MatPremDTOMapper;
 class RepositoryQueryAdaptateur implements RepositoryQueryPort{
     
     public function __construct(
@@ -26,6 +27,14 @@ class RepositoryQueryAdaptateur implements RepositoryQueryPort{
     public function getOneOxydeById(int $id){
 
     }
+    public function getOxydeById(array $arrId, ?bool $actifOnly = true):array{
+        $oxydes = $this->oxydeRepository->findById($arrId,$actifOnly);
+        $arrOxydesDTO=[];
+        foreach($oxydes as $oxyde){
+            array_push($arrOxydesDTO,OxydeDTOMapper::toDTO($oxyde));
+        }
+        return $arrOxydesDTO;
+    }    
     public function getAllOxydeActif():array{
         $doctrineOxyde = new Oxyde();
         
@@ -37,9 +46,19 @@ class RepositoryQueryAdaptateur implements RepositoryQueryPort{
         
         $arrOxydesDTO=[];
         foreach($oxydes as $oxyde){
-            array_push($arrOxydesDTO,OxydeDTOMapper::toDTO($oxyde));
+            $arrOxydesDTO[]=OxydeDTOMapper::toDTO($oxyde);
         }
         return $arrOxydesDTO;
     }
+
+    public function getMatPremByIdOxyde(array $arrId, ?bool $actifOnly = true):array{
+        $arrMatPrem = $this->matierePremiereRepository->findWithOxydeIn($arrId,$actifOnly);
+        $arrMatPremDTO=[];
+        foreach($arrMatPrem as $maPrem){
+            //$arrMatPremDTO[]=MatPremDTOMapper::toDTO($maPrem);
+        }
+        return $arrMatPremDTO;
+    }
+    
 }
 ?>

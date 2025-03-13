@@ -4,7 +4,8 @@ namespace Application\RechercheEmail\Mapper;
 use Domain\RechercheEmail\Object\ValueObject\FormuleSeger;
 use Application\RechercheEmail\Command\FormuleSegerConversionRecetteCommand;
 use Application\RechercheEmail\Port\RechercheEmailPort;
-
+use Application\Repository\Query\GetOxydeByIdQuery;
+use Application\Repository\Handler\GetOxydeByIdQueryHandler;
 
 
 class FormuleSegerConversionRecetteCommandMapper{
@@ -15,14 +16,21 @@ class FormuleSegerConversionRecetteCommandMapper{
         // faire appelle database port ici ???
         /// 
         // $oxyde 
-        // $handleDb = new DbQueryHandler( $this->oxydeDatabasePort );
-        // $queryDb = new QueryDb();
-        // $queryDb->setOrdreBy(QueryDb::__ORDER_BY_TYPE);
-        // return $handleDb->handle($queryDb);
+        
         //$recherEmailPort = RechercheEmailPort::getInstance();
-        dump($repositoryQuery);
-        dd($commandDto);
-        $formuleSeger = FormuleSeger::constructeur([],[],[]);
+        $arrIdOxydes=[];
+        foreach($commandDto->getOxydes() as $idOxyde=>$quantiteOxyde){
+           array_push($arrIdOxydes,$idOxyde); 
+        }
+        $handleDb = new GetOxydeByIdQueryHandler( $repositoryQuery );
+        $queryDb = new GetOxydeByIdQuery($arrIdOxydes);
+        
+        $arrOxydes = $handleDb->handle($queryDb);
+        foreach($arrOxydes as $ox){
+            $ox->setQuantite($commandDto->getOxydes()[$ox->getId()]);
+        }
+        
+        $formuleSeger = FormuleSeger::constructeur($arrOxydes);
         return $formuleSeger;
     }
 }

@@ -25,7 +25,7 @@
 
         public function handle(GetAllOxydeActifQuery $query):array{
             //return $this->databasePort->findAllActif();
-            $repositoryHandler = new RepositoryHandler( $this->rechercheEmailPort->repositoryQueryPort );
+            $repositoryHandler = new RepositoryHandler( $this->rechercheEmailPort->getRepositoryQueryPort() );
             $repositoryQuery = new RepositoryQuery();
             $repositoryQuery->setOrdreBy(RepositoryQuery::__ORDER_BY_TYPE);
             $arrDomainOx = $repositoryHandler->handle($repositoryQuery);

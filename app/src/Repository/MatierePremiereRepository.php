@@ -15,7 +15,15 @@ class MatierePremiereRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, MatierePremiere::class);
     }
-
+    
+    public function findWithOxydeIn(array $arrId,?bool $activeOnly=true):array{
+        $qb = $this->createQueryBuilder('p')
+                    ->where("p.id IN(:Ids)")
+                    ->setParameter('Ids', array_values($arrId))
+                    ->andWhere('p.actif = '.$activeOnly );
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
     //    /**
     //     * @return MatierePremiere[] Returns an array of MatierePremiere objects
     //     */

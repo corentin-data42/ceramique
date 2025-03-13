@@ -53,4 +53,10 @@ final class RechercheEmailAdaptateur implements RechercheEmailPort
         $handler = new GetAllOxydeActifQueryHandler($this);
         return $handler->handle($query);
     }
+    public function getRepositoryQueryPort():RepositoryQueryPort{
+        return $this->repositoryQueryPort;
+    }
+    public function getRepositoryCommandPort():RepositoryCommandPort{
+        return $this->repositoryCommandPort;
+    }
 }

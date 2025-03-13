@@ -2,7 +2,7 @@
 namespace Domain\Common\Object;
 
 use Domain\Common\Object\Collection;
-use Domain\Common\Object\OxydeQuantite;
+use Domain\Common\Object\Oxyde;
 
 class MatierePremiere{
     protected ?int $id = null;
@@ -65,13 +65,13 @@ class MatierePremiere{
         return $this->oxydes;
     }
 
-    public function addOxyde(OxydeQuantite $oxyde) : static{
+    public function addOxyde(Oxyde $oxyde) : static{
         if(!$this->oxydes->contains($oxyde)){
             $this->oxydes->add($oxyde);
         }
         return $this;
     }
-    public function removeOxyde(OxydeQuantite $oxyde):static{
+    public function removeOxyde(Oxyde $oxyde):static{
         if($this->oxydes->contains($oxyde)){
             $this->oxydes->remove($oxyde);
         }

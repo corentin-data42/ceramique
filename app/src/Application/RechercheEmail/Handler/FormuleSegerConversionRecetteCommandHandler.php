@@ -13,12 +13,17 @@ class FormuleSegerConversionRecetteCommandHandler{
     ){   
     }
     public function handle(FormuleSegerConversionRecetteCommand $commandDto):void{
-        foreach($commandDto->getOxydes() as $oxydes){
-            
-        }
-        $formuleSeger = FormuleSegerConversionRecetteCommandMapper::fromDTOToFormuleSeger($commandDto,$this->rechercheEmailPort->repositoryQueryPort);
-        
+
+        $formuleSeger = FormuleSegerConversionRecetteCommandMapper::fromDTOToFormuleSeger($commandDto,$this->rechercheEmailPort->getRepositoryQueryPort());
+        dd($formuleSeger->getOxydeIdArr());
+
+
         // logique et/ou appel au service
+
+        // recuperation matieres premieres active dont tous les oxydes
+        // sont dans les oxydes demander
+
+        
     }
 }
 ?>

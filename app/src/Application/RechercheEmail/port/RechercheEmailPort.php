@@ -15,4 +15,6 @@ interface RechercheEmailPort
     public function convSegerRecette(FormuleSegerConversionRecetteCommand $command);
     //public function save(OxydeDTO $oxyde, bool $flush = false);
     public function getAllOxydeActif(GetAllOxydeActifQuery $query):array;
+    public function getRepositoryQueryPort():RepositoryQueryPort;
+    public function getRepositoryCommandPort():RepositoryCommandPort;
 }

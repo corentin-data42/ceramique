@@ -8,6 +8,7 @@ class Oxyde{
     protected ?int $type = null;
     protected ?int $ordre = null;
     protected ?bool $actif = null;
+    protected ?float $quantite = null;
     public function __construct(
         // int $id,
         // string $nom,
@@ -76,6 +77,15 @@ class Oxyde{
     }
     public function isActif():bool {
         return $this->actif;
+    }
+    public function setQuantite(float $quantite):static
+    {
+        $this->quantite = $quantite;
+        return $this;
+    }
+    public function getQuantite():float
+    {
+        return $this->quantite;
     }
 }
 ?>

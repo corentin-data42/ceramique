@@ -16,8 +16,9 @@ final class SegerColonneBasiqueConstraintValidator extends ConstraintValidator
         }
         $totalvalueBasique=0;
         foreach ($constraint->oxydesBasiques as $oxyde){
-            if (!is_null($value[$oxyde->getId()]['quantite'])){
-                
+            if (!is_null($value[$oxyde->getId()]['quantite'])
+                && is_numeric($value[$oxyde->getId()]['quantite'])){
+
                 $totalvalueBasique += $value[$oxyde->getId()]['quantite'];
             }
         }

@@ -66,6 +66,7 @@ class FormuleSegerType extends AbstractType
                             'label'=>$libelleType
                         ]); 
             }
+            
             foreach($oxydes as $oxyde){
                 
                 if($oxyde->getType()==$type){

@@ -2,23 +2,25 @@
 
 use Domain\Common\Object\Oxyde;
 
-use Application\Repository\DTO\OxydeDTO;
+use Application\Repository\DTO\RepOxDTO;
 
-class OxydeDTOMapper{
+class RepOxDTOMapper{
     public static function toDTO(Oxyde $oxyde) {
-        $dto = new OxydeDTO();
+        $dto = new RepOxDTO();
         $dto->setId($oxyde->getId());
         $dto->setNom($oxyde->getNom());
         $dto->setFormule($oxyde->getFormule());
+        $dto->setType($oxyde->getType());
         $dto->setOrdre($oxyde->getOrdre());
         $dto->setActif($oxyde->isActif());
         return $dto;
     }
-    public static function fromDTO(OxydeDTO $dto):Oxyde {
+    public static function fromDTO(RepOxDTO $dto):Oxyde {
         $oxyde = new Oxyde();
         $oxyde->setId($dto->getId());
         $oxyde->setNom($dto->getNom());
         $oxyde->setFormule($dto->getFormule());
+        $oxyde->setType($dto->getType());
         $oxyde->setOrdre($dto->getOrdre());
         $oxyde->setActif($dto->getActif());
         return $oxyde;

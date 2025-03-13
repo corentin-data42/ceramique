@@ -43,7 +43,7 @@ class Oxyde
 
     #[ORM\Column(nullable: true)]
     #[Assert\Type('integer')]
-    private ?int $ordre = null;
+    private ?int $ordre = 0;
 
     #[ORM\Column]
     private ?bool $actif = null;

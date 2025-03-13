@@ -47,7 +47,7 @@ class Oxyde{
         $this->type = $type;
         return $this;
     }
-    public function setOrdre(int $ordre):static {
+    public function setOrdre(?int $ordre=0):static {
         $this->ordre = $ordre;
         return $this;
     }
@@ -71,7 +71,7 @@ class Oxyde{
     public function getType():int {
         return $this->type;
     }
-    public function getOrdre():int {
+    public function getOrdre():?int {
         return $this->ordre;
     }
     public function isActif():bool {

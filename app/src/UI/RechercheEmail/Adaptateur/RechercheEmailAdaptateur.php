@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-use Application\Repository\Port\Database\OxydeDatabasePort;
 use Application\Repository\Port\RepositoryCommandPort;
 use Application\Repository\Port\RepositoryQueryPort;
 use Application\RechercheEmail\Port\RechercheEmailPort;
@@ -17,16 +16,14 @@ use Application\RechercheEmail\Command\FormuleSegerConversionRecetteCommand;
 use Application\RechercheEmail\Handler\GetAllOxydeActifQueryHandler;
 use Application\RechercheEmail\Query\GetAllOxydeActifQuery;
 
-use App\Repository\DoctrineOxydeRepository;
-
 #use Domain\Common\Object\Oxyde;
 
 final class RechercheEmailAdaptateur implements RechercheEmailPort
 
 {
     private static RechercheEmailAdaptateur $_instance;
-    private RepositoryCommandPort $repositoryCommandPort;
-    private RepositoryQueryPort $repositoryQueryPort;
+    public RepositoryCommandPort $repositoryCommandPort;
+    public RepositoryQueryPort $repositoryQueryPort;
     //private RechercheEmailPort $rechercheEmailPort;
 
     private function __construct()
@@ -53,7 +50,7 @@ final class RechercheEmailAdaptateur implements RechercheEmailPort
     }
     public function getAllOxydeActif(GetAllOxydeActifQuery $query): array
     {
-        $handler = new GetAllOxydeActifQueryHandler($this,$this->repositoryQueryPort);
+        $handler = new GetAllOxydeActifQueryHandler($this);
         return $handler->handle($query);
     }
 }

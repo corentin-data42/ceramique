@@ -1,7 +1,7 @@
 <?php
 namespace Application\RechercheEmail\DTO;
 
-class OxydeDTO{
+class RechEmailOxDTO{
     private ?int $id = null;
     private ?string $nom = null;
     private ?string $formule = null;
@@ -9,21 +9,27 @@ class OxydeDTO{
     private ?int $ordre = null;
     private ?bool $actif = null;
     public function setId(?int $id):static{
+        $this->id = $id;
         return $this;
     }
     public function setNom(?string $nom):static{
+        $this->nom = $nom;
         return $this;
     }
     public function setFormule(?string $formule):static{
+        $this->formule=$formule;
         return $this;
     }
     public function setType(?int $type):static{
+        $this->type = $type;
         return $this;
     }
     public function setOrdre(?int $ordre):static{
+        $this->ordre = $ordre;
         return $this;
     }
     public function setActif(?bool $actif):static{
+        $this->actif = $actif;
         return $this;
     }
 

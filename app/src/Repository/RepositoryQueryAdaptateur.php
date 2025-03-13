@@ -31,6 +31,7 @@ class RepositoryQueryAdaptateur implements RepositoryQueryPort{
     }
     public function getAllOxydeActifOrderByType():array{
         $oxydes = $this->oxydeRepository->findAllActifOrderByType();
+        
         $arrOxydesDTO=[];
         foreach($oxydes as $oxyde){
             array_push($arrOxydesDTO,OxydeDTOMapper::toDTO($oxyde));

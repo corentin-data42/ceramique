@@ -1,7 +1,7 @@
-<?php namespace App\Repository;
+<?php namespace App\RepositoryAdaptateur;
 
 use Application\Repository\Port\RepositoryCommandPort;
-use Application\Repository\DTO\OxydeDTO;
+use Application\Repository\DTO\RepOxDTO;
 
 use App\Repository\OxydeRepository;
 use App\Repository\MatierePremiereRepository;
@@ -16,7 +16,7 @@ class RepositoryCommandAdaptateur implements RepositoryCommandPort{
     {
         //parent::__construct($registry, DoctrineOxyde::class);
     }
-    public function saveOxyde(OxydeDTO $oxyde, bool $flush = false){
+    public function saveOxyde(RepOxDTO $oxyde, bool $flush = false){
 
     }
 }

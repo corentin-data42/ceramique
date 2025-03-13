@@ -2,9 +2,9 @@
 
 namespace Application\Repository\Port;
 
-use Application\Repository\DTO\OxydeDTO;
+use Application\Repository\DTO\RepOxDTO;
 
 interface RepositoryCommandPort
 {
-    public function saveOxyde(OxydeDTO $oxyde, bool $flush = false);
+    public function saveOxyde(RepOxDTO $oxyde, bool $flush = false);
 }

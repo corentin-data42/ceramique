@@ -1,14 +1,17 @@
 <?php
-namespace App\Repository;
+namespace App\RepositoryAdaptateur;
 use Application\Repository\Port\RepositoryQueryPort;
+use Application\Repository\DTO\RepOxDTO;
+
 use App\Entity\Oxyde;
 use App\Repository\OxydeRepository;
 use App\Repository\MatierePremiereRepository;
 use App\Repository\MatierePremiereOxydeQuantiteRepository;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Application\Repository\DTO\OxydeDTO;
+
 use App\DTO\Mapper\OxydeDTOMapper;
 class RepositoryQueryAdaptateur implements RepositoryQueryPort{
     

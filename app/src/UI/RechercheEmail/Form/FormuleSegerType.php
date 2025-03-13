@@ -1,10 +1,10 @@
 <?php
 
-namespace App\UI\RechercheEmail\Form;
-use App\UI\RechercheEmail\Form\OxydeFormuleSegerType;
-use App\UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
-
-
+namespace UI\RechercheEmail\Form;
+use UI\RechercheEmail\Form\OxydeFormuleSegerType;
+use UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
+use UI\RechercheEmail\Validator\SegerColonneBasiqueConstraint;
+use UI\RechercheEmail\Validator\SegerColonneBasiqueConstraintValidator;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -32,6 +32,8 @@ class FormuleSegerType extends AbstractType
         3=>'acides'
 
     ];
+    private const _TYPE_COLONNE_BASIQUE = 1;
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         
@@ -40,17 +42,36 @@ class FormuleSegerType extends AbstractType
         
         $oxydes = $adaptateur->getAllOxydeActif($query);
 
+        // recuperation des oxydes basiques
+        $oxydeBasique = [];
+        foreach($oxydes as $oxyde){
+            if($oxyde->getType()==SELF::_TYPE_COLONNE_BASIQUE){
+                array_push($oxydeBasique,$oxyde);
+            }
+        }
+        
         foreach(SELF::_LIBELLE_COLONNE_UML as $type=>$libelleType){
-
-            $builder->add(  $type,
+            
+            if($type==SELF::_TYPE_COLONNE_BASIQUE){
+               
+                $builder->add(  $type,
+                            FormType::class, 
+                            ['inherit_data' => true,
+                            'label'=>$libelleType,
+                            'constraints' => [
+                                new SegerColonneBasiqueConstraint($oxydeBasique)
+                            ]
+                        ]);
+            }else{
+                $builder->add(  $type,
                             FormType::class, 
                             ['inherit_data' => true,
                             'label'=>$libelleType
                         ]); 
-            
+            }
             foreach($oxydes as $oxyde){
                 
-                if($oxyde->gettype()==$type){
+                if($oxyde->getType()==$type){
                     $builder->get($type)->add(
                         $oxyde->getId(),
                         OxydeFormuleSegerType::class,[

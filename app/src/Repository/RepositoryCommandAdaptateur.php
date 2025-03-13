@@ -1,4 +1,4 @@
-<?php namespace App\UI\Repository;
+<?php namespace App\Repository;
 
 use Application\Repository\Port\RepositoryCommandPort;
 use Application\Repository\DTO\OxydeDTO;

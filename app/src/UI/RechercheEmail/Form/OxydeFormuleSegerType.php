@@ -1,7 +1,7 @@
 <?php
 
-namespace App\UI\RechercheEmail\Form;
-use App\UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
+namespace UI\RechercheEmail\Form;
+use UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
 
 use App\Entity\DoctrineMatierePremiere;
 use App\Entity\DoctrineMatierePremiereOxyde;

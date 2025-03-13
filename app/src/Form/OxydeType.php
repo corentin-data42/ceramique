@@ -31,7 +31,16 @@ class OxydeType extends AbstractType
                 'expanded'=>true
             ])
             ->add('ordre')
-            ->add('actif')
+            ->add('actif',CheckboxType::class,[
+                'required'=>false,
+                'attr'=>[
+                    'class'=>'btn-check',
+                    'autocomplete'=>"off",
+                    'empty_data'=>false,
+                    
+                ],
+                'label_attr' => ['class' => 'btn btn-outline-success']
+            ])
             ->add('save',SubmitType::class,[
                 'label'=>'Enregistrer'
             ])

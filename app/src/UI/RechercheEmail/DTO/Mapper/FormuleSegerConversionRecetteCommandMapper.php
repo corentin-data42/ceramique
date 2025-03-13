@@ -1,5 +1,5 @@
 <?php
-namespace App\UI\RechercheEmail\DTO\Mapper;
+namespace UI\RechercheEmail\DTO\Mapper;
 
 use Application\RechercheEmail\Command\FormuleSegerConversionRecetteCommand;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\RechercheEmail\Adaptateur;
+namespace UI\RechercheEmail\Adaptateur;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

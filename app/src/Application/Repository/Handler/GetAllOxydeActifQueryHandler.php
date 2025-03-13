@@ -13,7 +13,7 @@
             protected RepositoryQueryPort $RepositoryQueryPort
         ){   
         }
-
+        // on recoit des DTO est on construit des objets domaine
         public function handle(GetAllOxydeActifQuery $query):array{
             if($query->getOrdreBy()==GetAllOxydeActifQuery::__ORDER_BY_TYPE){
                 return $this->RepositoryQueryPort->getAllOxydeActifOrderByType();

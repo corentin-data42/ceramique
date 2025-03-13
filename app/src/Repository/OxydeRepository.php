@@ -2,10 +2,10 @@
 
 namespace App\Repository;
 
-use Application\Repository\DTO\OxydeDTO;
-use App\DTO\Mapper\OxydeDTOMapper;
+
 
 use App\Entity\Oxyde;
+use Application\Repository\DTO\OxydeDTOMapper as DTOOxydeDTOMapper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,18 +23,21 @@ class OxydeRepository extends ServiceEntityRepository
     }
     public function findAllActif(): array{
         //$entityManager = $this->getEntityManager();
-        return  $this->findBy(
+        return $this->findBy(
             ['actif' => true]
         );
+
     }
     public function findAllActifOrderByType():array{
         $qb = $this->createQueryBuilder('p')
             ->orderBy('p.type', 'ASC');
         $query = $qb->getQuery();
         return $query->execute();
+        
+        
     }
 
-    public function save(OxydeDTO $oxydeDto, bool $flush = false){
-        $oxyde = OxydeDTOMapper::fromDTO($oxydeDto);
+    public function save(Oxyde $oxyde, bool $flush = false){
+        //$oxyde = OxydeDTOMapper::fromDTO($oxydeDto);
     }
 }

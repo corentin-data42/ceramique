@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use App\Validator as AcmeAssert;
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: OxydeRepository::class)]
 #[ORM\Table(name: 'oxyde')]
 class Oxyde
@@ -17,18 +20,29 @@ class Oxyde
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
     private ?string $nom = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?float $pm = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    // #[Assert\Type('string')]
     private ?string $formule = null;
 
     #[ORM\Column]
+    #[Assert\Sequentially([
+        new Assert\NotBlank,
+        new Assert\Type('integer'),
+        new AcmeAssert\OxydeTypeConstraint(['message'=>'le type doit etre 1,2 ou 3','typeAuthorise'=> [1,2,3]])
+    ])]
     private ?int $type = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Type('integer')]
     private ?int $ordre = null;
 
     #[ORM\Column]
@@ -54,6 +68,11 @@ class Oxyde
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setId($id): static
+    {
+        $this->id=$id;
+        return $this;
     }
 
     public function getNom(): ?string
@@ -120,7 +139,11 @@ class Oxyde
     {
         return $this->actif;
     }
-
+    public function getActif(): ?bool
+    {
+        return $this->actif;
+    }
+    
     public function setActif(bool $actif): static
     {
         $this->actif = $actif;

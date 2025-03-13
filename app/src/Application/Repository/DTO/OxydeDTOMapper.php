@@ -14,6 +14,15 @@ class OxydeDTOMapper{
         $dto->setActif($oxyde->isActif());
         return $dto;
     }
+    public static function fromDTO(OxydeDTO $dto):Oxyde {
+        $oxyde = new Oxyde();
+        $oxyde->setId($dto->getId());
+        $oxyde->setNom($dto->getNom());
+        $oxyde->setFormule($dto->getFormule());
+        $oxyde->setOrdre($dto->getOrdre());
+        $oxyde->setActif($dto->getActif());
+        return $oxyde;
+    }
 }
 
 ?>

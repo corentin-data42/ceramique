@@ -1,17 +1,17 @@
 <?php
 
-namespace App\UI\RechercheEmail\Controller;
+namespace UI\RechercheEmail\Controller;
 
-use App\UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
-use App\UI\RechercheEmail\Form\FormuleSegerType;
-use App\UI\RechercheEmail\DTO\Mapper\FormuleSegerConversionRecetteCommandMapper;
+use UI\RechercheEmail\Adaptateur\RechercheEmailAdaptateur;
+use UI\RechercheEmail\Form\FormuleSegerType;
+use UI\RechercheEmail\DTO\Mapper\FormuleSegerConversionRecetteCommandMapper;
 
 use App\Repository\OxydeRepository;
 use App\Repository\MatierePremiereRepository;
 use App\Repository\MatierePremiereOxydeQuantiteRepository;
 
-use App\UI\Repository\RepositoryQueryAdaptateur;
-use App\UI\Repository\RepositoryCommandAdaptateur;
+use App\Repository\RepositoryQueryAdaptateur;
+use App\Repository\RepositoryCommandAdaptateur;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

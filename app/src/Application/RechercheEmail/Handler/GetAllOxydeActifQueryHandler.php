@@ -2,7 +2,10 @@
     namespace Application\RechercheEmail\Handler;
     
     use Domain\Common\Object\Oxyde;
-    use Application\RechercheEmail\Repository\DTO\OxydeDTO;
+    use Application\Repository\DTO\OxydeDTO as RepOxDTO;
+    use Application\Repository\DTO\OxydeDTOMapper as RepOxDTOMapper;
+    use Application\RechercheEmail\DTO\OxydeDTO;
+    use Application\RechercheEmail\DTO\OxydeDTOMapper;
     use Application\RechercheEmail\Query\GetAllOxydeActifQuery;
     use Application\RechercheEmail\Port\RechercheEmailPort;
     
@@ -24,6 +27,11 @@
             $repositoryHandler = new RepositoryHandler( $this->repositoryQueryPort );
             $repositoryQuery = new RepositoryQuery();
             $repositoryQuery->setOrdreBy(RepositoryQuery::__ORDER_BY_TYPE);
-            return $repositoryHandler->handle($repositoryQuery);
+            $repositoryResult = $repositoryHandler->handle($repositoryQuery);
+            $arrOxydeDto=[];
+            foreach($repositoryResult as $repOxDTO){
+                array_push($arrOxydeDto,OxydeDTOMapper::toDTO(RepOxDTOMapper::fromDTO($repOxDTO)));
+            }
+            return $arrOxydeDto;
         }
     }

@@ -5,11 +5,11 @@ namespace App\Validator;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-final class DoctrineOxydeTypeValidator extends ConstraintValidator
+final class OxydeTypeConstraintValidator extends ConstraintValidator
 {
     public function validate(mixed $value, Constraint $constraint): void
     {
-        /* @var DoctrineOxydeType $constraint */
+        /* @var OxydeType $constraint */
 
         if (null === $value || '' === $value) {
             return;

@@ -3,14 +3,14 @@ namespace Application\RechercheEmail\Mapper;
 
 use Domain\RechercheEmail\Object\ValueObject\FormuleSeger;
 use Application\RechercheEmail\Command\FormuleSegerConversionRecetteCommand;
+use Application\RechercheEmail\Port\RechercheEmailPort;
 
-use Application\Common\Query\GetAllOxydeActifQuery as QueryDb;
-use Application\Common\Handler\GetAllOxydeActifQueryHandler as DbQueryHandler;
-use Application\Common\Port\Database\OxydeDatabasePort;
 
 
 class FormuleSegerConversionRecetteCommandMapper{
-    public static function fromDTOToFormuleSeger(FormuleSegerConversionRecetteCommand $commandDto):FormuleSeger {
+    public static function fromDTOToFormuleSeger(
+            FormuleSegerConversionRecetteCommand $commandDto,
+            $repositoryQuery):FormuleSeger {
         /// constusruire les oxyde ici est les ajouter a lobjet value seger ???
         // faire appelle database port ici ???
         /// 
@@ -19,6 +19,8 @@ class FormuleSegerConversionRecetteCommandMapper{
         // $queryDb = new QueryDb();
         // $queryDb->setOrdreBy(QueryDb::__ORDER_BY_TYPE);
         // return $handleDb->handle($queryDb);
+        //$recherEmailPort = RechercheEmailPort::getInstance();
+        dump($repositoryQuery);
         dd($commandDto);
         $formuleSeger = FormuleSeger::constructeur([],[],[]);
         return $formuleSeger;

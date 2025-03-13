@@ -9,15 +9,14 @@ use Application\RechercheEmail\Mapper\FormuleSegerConversionRecetteCommandMapper
 
 class FormuleSegerConversionRecetteCommandHandler{
     public function __construct(
-        protected RechercheEmailPort $rechercheEmailPort,
-        protected RepositoryQueryPort $repositoryQueryPort,
+        protected RechercheEmailPort $rechercheEmailPort
     ){   
     }
     public function handle(FormuleSegerConversionRecetteCommand $commandDto):void{
         foreach($commandDto->getOxydes() as $oxydes){
             
         }
-        $formuleSeger = FormuleSegerConversionRecetteCommandMapper::fromDTOToFormuleSeger($commandDto);
+        $formuleSeger = FormuleSegerConversionRecetteCommandMapper::fromDTOToFormuleSeger($commandDto,$this->rechercheEmailPort->repositoryQueryPort);
         
         // logique et/ou appel au service
     }

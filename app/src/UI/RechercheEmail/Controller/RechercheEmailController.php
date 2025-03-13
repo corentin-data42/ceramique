@@ -87,6 +87,8 @@ final class RechercheEmailController extends AbstractController
             $mapper=new FormuleSegerConversionRecetteCommandMapper();
             $command = $mapper->requestToCommandDTO($request);
             $adaptateur->convSegerRecette($command);
+        }elseif($form->isSubmitted()){
+            $this->addFlash('error','erreur');
         }
         
 

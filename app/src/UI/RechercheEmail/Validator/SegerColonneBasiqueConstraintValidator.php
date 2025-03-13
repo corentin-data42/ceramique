@@ -15,16 +15,18 @@ final class SegerColonneBasiqueConstraintValidator extends ConstraintValidator
             return;
         }
         $totalvalueBasique=0;
-        foreach ($constraint->oxydesBasique as $oxyde){
-            if (array_key_exists($oxyde->getId(),$value)){
-                array_push($valueBasique,$oxyde);
+        foreach ($constraint->oxydesBasiques as $oxyde){
+            if (!is_null($value[$oxyde->getId()]['quantite'])){
+                
+                $totalvalueBasique += $value[$oxyde->getId()]['quantite'];
             }
         }
-        dd($value);
-        // TODO: implement the validation here
-        $this->context->buildViolation($constraint->message)
-            ->setParameter('{{ value }}', $value)
+        
+        if($totalvalueBasique<>1){
+            $this->context->buildViolation($constraint->message)
+            //->setParameter('{{ value }}', $value)
             ->addViolation()
         ;
+        }
     }
 }

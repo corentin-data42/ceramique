@@ -40,13 +40,13 @@ class FormuleSegerType extends AbstractType
         $oxydes = $adaptateur->getAllOxydeActif($query);
 
         // recuperation des oxydes basiques
-        $oxydeBasique = [];
+        $oxydesBasiques = [];
         foreach($oxydes as $oxyde){
             if($oxyde->getType()==SELF::_TYPE_COLONNE_BASIQUE){
-                array_push($oxydeBasique,$oxyde);
+                array_push($oxydesBasiques,$oxyde);
             }
         }
-        
+
         foreach(SELF::_LIBELLE_COLONNE_UML as $type=>$libelleType){
             
             if($type==SELF::_TYPE_COLONNE_BASIQUE){
@@ -56,7 +56,7 @@ class FormuleSegerType extends AbstractType
                             ['inherit_data' => true,
                             'label'=>$libelleType,
                             'constraints' => [
-                                new SegerColonneBasiqueConstraint($oxydeBasique)
+                                new SegerColonneBasiqueConstraint($oxydesBasiques)
                             ]
                         ]);
             }else{

@@ -31,7 +31,7 @@ class OxydeType extends AbstractType
                 'expanded'=>true
             ])
             ->add('ordre')
-            ->add('actif',CheckboxType::class,[
+            ->add('flagEtat',CheckboxType::class,[
                 'required'=>false,
                 'attr'=>[
                     'class'=>'btn-check',

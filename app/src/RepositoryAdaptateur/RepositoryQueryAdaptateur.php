@@ -53,10 +53,13 @@ class RepositoryQueryAdaptateur implements RepositoryQueryPort{
 
     public function getMatPremByIdOxyde(array $arrId, ?bool $actifOnly = true):array{
         $arrMatPrem = $this->matierePremiereRepository->findWithOxydeIn($arrId,$actifOnly);
+        
         $arrMatPremDTO=[];
         foreach($arrMatPrem as $maPrem){
-            //$arrMatPremDTO[]=MatPremDTOMapper::toDTO($maPrem);
+            $maPrem->getQuantite()->initialize();
+            $arrMatPremDTO[]=MatPremDTOMapper::toDTO($maPrem);
         }
+        dd($arrMatPrem);
         return $arrMatPremDTO;
     }
     

@@ -53,6 +53,7 @@ final class MatierePremiereController extends AbstractController
             return $this->redirectToRoute('matiere_premiere.index');
         }elseif($form->isSubmitted()){
             $this->addFlash('error','la matière première n\'a pas été modifiée');
+            //dd($form->getErrors(true));
         }
         return $this->render("matiere_premiere/edit.html.twig",[
             "matierepremiere"=>$matierePremiere,

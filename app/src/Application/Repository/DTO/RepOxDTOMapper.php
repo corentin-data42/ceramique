@@ -12,7 +12,7 @@ class RepOxDTOMapper{
         $dto->setFormule($oxyde->getFormule());
         $dto->setType($oxyde->getType());
         $dto->setOrdre($oxyde->getOrdre());
-        $dto->setActif($oxyde->isActif());
+        $dto->setFlagEtat($oxyde->getFlagEtat());
         return $dto;
     }
     public static function fromDTO(RepOxDTO $dto):Oxyde {
@@ -22,7 +22,7 @@ class RepOxDTOMapper{
         $oxyde->setFormule($dto->getFormule());
         $oxyde->setType($dto->getType());
         $oxyde->setOrdre($dto->getOrdre());
-        $oxyde->setActif($dto->getActif());
+        $oxyde->setFlagEtat($dto->getFlagEtat());
         return $oxyde;
     }
 }

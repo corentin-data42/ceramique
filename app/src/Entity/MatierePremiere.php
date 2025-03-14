@@ -26,7 +26,7 @@ class MatierePremiere
     private ?int $ordre = null;
 
     #[ORM\Column()]
-    private bool $active = false;
+    private bool $flagEtat = false;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $creationAt = null;
@@ -92,14 +92,14 @@ class MatierePremiere
         return $this;
     }
 
-    public function isActive(): ?bool
+    public function getFlagEtat(): ?bool
     {
-        return $this->active;
+        return $this->flagEtat;
     }
 
-    public function setActive(bool $active): static
+    public function setFlagEtat(bool $flagEtat): static
     {
-        $this->active = $active;
+        $this->flagEtat = $flagEtat;
 
         return $this;
     }

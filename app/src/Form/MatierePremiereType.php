@@ -25,7 +25,7 @@ class MatierePremiereType extends AbstractType
             ->add('avertissement')
             ->add('pmAvantCuisson')
             ->add('ordre')
-            ->add('active',CheckboxType::class,[
+            ->add('flagEtat',CheckboxType::class,[
                 'required'=>false,
                 'attr'=>[
                     'class'=>'btn-check',

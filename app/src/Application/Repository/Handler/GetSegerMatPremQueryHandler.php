@@ -16,6 +16,7 @@
         }
 
         public function handle(GetSegerMatPremQuery $query):array{
+            
             $repositoryResult = $this->RepositoryQueryPort->getMatPremByIdOxyde($query->getId(),$query->getActiveOnly());
             $arrMatPremDto=[];
             foreach($repositoryResult as $repDTO){

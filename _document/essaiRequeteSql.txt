@@ -1,0 +1,39 @@
+SELECT p.*, GROUP_CONCAT(DISTINCT q.quantite, o.formule SEPARATOR ', ') AS formule 
+FROM matiere_premiere p 
+INNER JOIN tl_matiere_premiere_oxyde q ON q.matiere_premiere_id = p.id 
+INNER JOIN oxyde o ON q.oxyde_id = o.id 
+WHERE o.id IN(5,1,3) 
+AND p.active = 1 
+AND o.actif = 1 
+AND p.id NOT IN(
+	SELECT p2.id 
+	FROM matiere_premiere p2 
+	INNER JOIN tl_matiere_premiere_oxyde q2 ON q2.matiere_premiere_id = p2.id 
+	INNER JOIN oxyde o2 ON q2.oxyde_id = o2.id 
+	WHERE o2.id NOT IN(5,1,3) 
+	AND p2.active = 1 
+	AND o2.actif = 1
+)
+GROUP BY p.id
+ORDER BY p.ordre ASC
+
+
+
+SELECT p.*, GROUP_CONCAT(DISTINCT q.quantite, o.formule SEPARATOR ', ') AS formule 
+FROM matiere_premiere p 
+INNER JOIN tl_matiere_premiere_oxyde q ON q.matiere_premiere_id = p.id 
+INNER JOIN oxyde o ON q.oxyde_id = o.id 
+WHERE o.id IN(5,1,3) 
+AND p.active = 1 
+AND o.actif = 1 
+AND p.id NOT IN(
+	SELECT p.id 
+	FROM matiere_premiere p 
+	INNER JOIN tl_matiere_premiere_oxyde q ON q.matiere_premiere_id = p.id 
+	INNER JOIN oxyde o ON q.oxyde_id = o.id 
+	WHERE o.id NOT IN(5,1,3) 
+	AND p.active = 1 
+	AND o.actif = 1
+)
+GROUP BY p.id
+ORDER BY p.ordre ASC

@@ -82,7 +82,7 @@
             return $this;
         }
 
-        public function isFlagEtat(): ?bool
+        public function getFlagEtat(): ?bool
         {
             return $this->flagEtat;
         }

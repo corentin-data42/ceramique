@@ -1,13 +1,16 @@
 <?php
-namespace Application\RechercheEmail\DTO;
+namespace Application\Repository\DTO;
 
-class RechEmailOxDTO{
+class RepMatPremDTO{
     private ?int $id = null;
     private ?string $nom = null;
-    private ?string $formule = null;
+    private ?string $nomCour = null;
+    private ?float $pmAvantCuisson = null;
+
+
     private ?int $type = null;
-    private ?int $ordre = null;
-    private ?bool $flagEtat = null;
+    private ?int $ordre = 0;
+
     public function setId(?int $id):static{
         $this->id = $id;
         return $this;
@@ -17,7 +20,7 @@ class RechEmailOxDTO{
         return $this;
     }
     public function setFormule(?string $formule):static{
-        $this->formule=$formule;
+        $this->formule = $formule;
         return $this;
     }
     public function setType(?int $type):static{
@@ -28,27 +31,27 @@ class RechEmailOxDTO{
         $this->ordre = $ordre;
         return $this;
     }
-    public function setFlagEtat(?bool $flagEtat):static{
+    public function setFlagEtat(?bool $actif):static{
         $this->flagEtat = $flagEtat;
         return $this;
     }
 
-    public function getId():int{
+    public function getId():?int{
         return $this->id;
     }
-    public function getNom():string{
+    public function getNom():?string{
         return $this->nom;
     }
-    public function getFormule():string{
+    public function getFormule():?string{
         return $this->formule;
     }
-    public function getType():int{
+    public function getType():?int{
         return $this->type;
     }
-    public function getOrdre():int{
+    public function getOrdre():?int{
         return $this->ordre;
     }
-    public function getFlagEtat():bool{
+    public function getFlagEtat():?bool{
         return $this->flagEtat;
     }
 

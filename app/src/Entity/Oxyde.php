@@ -46,7 +46,7 @@ class Oxyde
     private ?int $ordre = 0;
 
     #[ORM\Column]
-    private ?bool $actif = null;
+    private ?bool $flagEtat = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $creationAt = null;
@@ -135,18 +135,14 @@ class Oxyde
         return $this;
     }
 
-    public function isActif(): ?bool
+    public function getFlagEtat(): ?bool
     {
-        return $this->actif;
-    }
-    public function getActif(): ?bool
-    {
-        return $this->actif;
+        return $this->flagEtat;
     }
     
-    public function setActif(bool $actif): static
+    public function setFlagEtat(bool $flagEtat): static
     {
-        $this->actif = $actif;
+        $this->flagEtat = $flagEtat;
 
         return $this;
     }

@@ -11,7 +11,7 @@ class MatierePremiere{
     protected ?string $avertissement = null;
     protected ?float $pmAvantCuisson = null;
     protected ?int $ordre = null;
-    protected ?bool $active = null; 
+    protected ?bool $flagEtat = null; 
     protected ?Collection $oxydes = null;
 
     public function __construct()
@@ -42,8 +42,8 @@ class MatierePremiere{
         $this->ordre =$ordre;
         return $this;
     }
-    public function setActive(bool $active):static{
-        $this->active= $active;
+    public function setFlagEtat(bool $flagEtat):static{
+        $this->flagEtat= $flagEtat;
         return $this;
     }
 
@@ -66,8 +66,8 @@ class MatierePremiere{
     public function getOrdre():int{
         return $this->ordre;
     }
-    public function isActive():bool{
-        return $this->active;
+    public function getFlagEtat():bool{
+        return $this->flagEtat;
     }
     public function getOxydes():Collection{
         return $this->oxydes;

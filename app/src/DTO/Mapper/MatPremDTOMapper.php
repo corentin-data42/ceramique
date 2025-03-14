@@ -1,12 +1,12 @@
 <?php
 namespace App\DTO\Mapper;
 
-use App\Entity\Oxyde;
-use Application\Repository\DTO\RepOxDTO;
+use App\Entity\MatierePremiere;
+use Application\Repository\DTO\RepMatPremDTO;
 
-class OxydeDTOMapper{
-    public static function fromDTO(RepOxDTO $dto):Oxyde {
-        $oxyde = new Oxyde();
+class MatPremDTOMapper{
+    public static function fromDTO(RepMatPremDTO $dto):MatierePremiere {
+        $oxyde = new MatierePremiere();
         $oxyde->setId($dto->getId())
             ->setNom($dto->getNom())
             ->setFormule($dto->getFormule())
@@ -15,8 +15,8 @@ class OxydeDTOMapper{
             ->setFlagEtat($dto->getFlagEtat());
         return $oxyde;
     }
-    public static function toDTO(Oxyde $oxyde):RepOxDTO {
-        $dto = new RepOxDTO();
+    public static function toDTO(MatierePremiere $oxyde):RepMatPremDTO {
+        $dto = new RepMatPremDTO();
         $dto->setId($oxyde->getId())
             ->setNom($oxyde->getNom())
             ->setFormule($oxyde->getFormule())

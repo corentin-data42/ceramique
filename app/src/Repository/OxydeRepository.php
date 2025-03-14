@@ -25,7 +25,7 @@ class OxydeRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
                     ->where("p.id IN(:Ids)")
                     ->setParameter('Ids', array_values($arrId))
-                    ->andWhere('p.actif = '.$actifOnly );
+                    ->andWhere('p.flagEtat = '.$actifOnly );
         $query = $qb->getQuery();
         return $query->execute();
     }

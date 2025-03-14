@@ -12,7 +12,7 @@ final class FormuleSeger{
     private array $acide = [];
     private const TYPE_BASIQUE = 1;
     private const TYPE_AMPHOTERE = 2;
-    private const TYPE_ACIDE = 2;
+    private const TYPE_ACIDE = 3;
     private function __construct(array $oxydes)
     {
         foreach($oxydes as $oxyde){
@@ -50,6 +50,7 @@ final class FormuleSeger{
      * return array 
      */
     public function getOxydeIdArr():array{
+
         $arrOxydeId=[];
         foreach($this->basique as $ox){
             $arrOxydeId[]=$ox->getId();

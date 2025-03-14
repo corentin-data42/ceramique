@@ -7,7 +7,7 @@ class Oxyde{
     protected ?string $formule = null;
     protected ?int $type = null;
     protected ?int $ordre = null;
-    protected ?bool $actif = null;
+    protected ?bool $flagEtat = null;
     protected ?float $quantite = null;
     public function __construct(
         // int $id,
@@ -52,8 +52,8 @@ class Oxyde{
         $this->ordre = $ordre;
         return $this;
     }
-    public function setActif(bool $actif):static {
-        $this->actif = $actif;
+    public function setFlagEtat(bool $flagEtat):static {
+        $this->flagEtat = $flagEtat;
         return $this;
     }
 
@@ -75,8 +75,8 @@ class Oxyde{
     public function getOrdre():?int {
         return $this->ordre;
     }
-    public function isActif():bool {
-        return $this->actif;
+    public function getFlagEtat():bool {
+        return $this->flagEtat;
     }
     public function setQuantite(float $quantite):static
     {

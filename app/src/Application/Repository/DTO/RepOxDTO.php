@@ -7,7 +7,7 @@ class RepOxDTO{
     private ?string $formule = null;
     private ?int $type = null;
     private ?int $ordre = 0;
-    private ?bool $actif = null;
+    private ?bool $flagEtat = null;
     public function setId(?int $id):static{
         $this->id = $id;
         return $this;
@@ -28,8 +28,8 @@ class RepOxDTO{
         $this->ordre = $ordre;
         return $this;
     }
-    public function setActif(?bool $actif):static{
-        $this->actif = $actif;
+    public function setFlagEtat(?bool $flagEtat):static{
+        $this->flagEtat = $flagEtat;
         return $this;
     }
 
@@ -48,8 +48,8 @@ class RepOxDTO{
     public function getOrdre():?int{
         return $this->ordre;
     }
-    public function getActif():?bool{
-        return $this->actif;
+    public function getFlagEtat():?bool{
+        return $this->flagEtat;
     }
 
 }

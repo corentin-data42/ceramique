@@ -12,7 +12,7 @@ class RechEmailOxDTOMapper{
             ->setFormule($oxyde->getFormule())
             ->setType($oxyde->getType())
             ->setOrdre($oxyde->getOrdre())
-            ->setActif($oxyde->isActif());
+            ->setFlagEtat($oxyde->getFlagEtat());
         return $oxyde;
     }
     public static function fromDTO(RechEmailOxDTO $dto):Oxyde {
@@ -22,7 +22,7 @@ class RechEmailOxDTOMapper{
             ->setOrdre($dto->getOrdre())
             ->setFormule($dto->getFormule())
             ->setType($dto->getType())
-            ->setActif($dto->getActif());
+            ->setFlagEtat($dto->getFlagEtat());
         return $oxyde;
     }
 }

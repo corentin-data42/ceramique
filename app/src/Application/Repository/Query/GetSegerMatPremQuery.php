@@ -18,14 +18,14 @@
             return $this;
         }
 
-        public function getActifOnly(): bool
+        public function getActiveOnly(): bool
         {
-            return $this->actifOnly;
+            return $this->activeOnly;
         }
 
-        public function setActifOnly(bool $actifOnly): self
+        public function setActiveOnly(bool $activeOnly): self
         {
-            $this->actifOnly=$actifOnly;
+            $this->activeOnly=$activeOnly;
             return $this;
         }
     }

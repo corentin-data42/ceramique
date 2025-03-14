@@ -19,9 +19,6 @@ class MatierePremiere
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $formule = null;
-
     #[ORM\Column(nullable: true)]
     private ?float $pmAvantCuisson = null;
 
@@ -43,6 +40,12 @@ class MatierePremiere
     #[ORM\OneToMany(targetEntity: MatierePremiereOxydeQuantite::class, mappedBy: 'matierePremiere', orphanRemoval: true, cascade: ['persist'])]
     private Collection $quantite;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $avertissement = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nomCour = null;
+
     public function __construct()
     {
         $this->quantite = new ArrayCollection();
@@ -61,18 +64,6 @@ class MatierePremiere
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getFormule(): ?string
-    {
-        return $this->formule;
-    }
-
-    public function setFormule(string $formule): static
-    {
-        $this->formule = $formule;
 
         return $this;
     }
@@ -163,6 +154,30 @@ class MatierePremiere
                 $quantite->setMatierePremiere(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvertissement(): ?string
+    {
+        return $this->avertissement;
+    }
+
+    public function setAvertissement(?string $avertissement): static
+    {
+        $this->avertissement = $avertissement;
+
+        return $this;
+    }
+
+    public function getNomCour(): ?string
+    {
+        return $this->nomCour;
+    }
+
+    public function setNomCour(string $nomCour): static
+    {
+        $this->nomCour = $nomCour;
 
         return $this;
     }

@@ -21,7 +21,8 @@ class MatierePremiereType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('formule')
+            ->add('nomCour')
+            ->add('avertissement')
             ->add('pmAvantCuisson')
             ->add('ordre')
             ->add('active',CheckboxType::class,[

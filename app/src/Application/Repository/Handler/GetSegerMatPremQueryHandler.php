@@ -8,7 +8,7 @@
     use Application\Repository\Port\RepositoryQueryPort;
     
 
-    class GetOxydeByIdQueryHandler{
+    class GetSegerMatPremQueryHandler{
         
         public function __construct(
             protected RepositoryQueryPort $RepositoryQueryPort
@@ -17,10 +17,10 @@
 
         public function handle(GetSegerMatPremQuery $query):array{
             $repositoryResult = $this->RepositoryQueryPort->getMatPremByIdOxyde($query->getId(),$query->getActiveOnly());
-            $arrOxydeDto=[];
+            $arrMatPremDto=[];
             foreach($repositoryResult as $repDTO){
-                $arrOxydeDto[]=RepOxDTOMapper::fromDTO($repDTO);
+                $arrMatPremDto[]=RepOxDTOMapper::fromDTO($repDTO);
             }
-            return $arrOxydeDto;
+            return $arrMatPremDto;
         }
     }

@@ -7,7 +7,8 @@ use Domain\Common\Object\Oxyde;
 class MatierePremiere{
     protected ?int $id = null;
     protected ?string $nom =null;
-    protected ?string $formule = null;
+    protected ?string $nomCour = null;
+    protected ?string $avertissement = null;
     protected ?float $pmAvantCuisson = null;
     protected ?int $ordre = null;
     protected ?bool $active = null; 
@@ -25,8 +26,12 @@ class MatierePremiere{
         $this->nom =$nom;
         return $this;
     }
-    public function setFormule(string $formule):static{
-        $this->formule =$formule;
+    public function setNomCour(string $nomCour):static{
+        $this->nomCour =$nomCour;
+        return $this;
+    }
+    public function setAvertissement(string $avertissement):static{
+        $this->avertissement =$avertissement;
         return $this;
     }
     public function setPmAvantCuisson(float $pmAvantCuisson):static{
@@ -49,8 +54,11 @@ class MatierePremiere{
     public function getNom():string{
         return $this->nom;
     }
-    public function getFormule():string{
-        return $this->formule;
+    public function getNomCour():string{
+        return $this->nomCour;
+    }
+    public function getAvertissement():string{
+        return $this->avertissement;
     }
     public function getPmAvantCuisson():float{
         return $this->pmAvantCuisson;

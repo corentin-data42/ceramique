@@ -8,6 +8,7 @@ class RepOxDTO{
     private ?int $type = null;
     private ?int $ordre = 0;
     private ?bool $flagEtat = null;
+    private ?float $quantite = null;
     public function setId(?int $id):static{
         $this->id = $id;
         return $this;
@@ -52,5 +53,25 @@ class RepOxDTO{
         return $this->flagEtat;
     }
 
+
+    /**
+     * Get the value of quantite
+     */ 
+    public function getQuantite():float
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set the value of quantite
+     *
+     * @return  self
+     */ 
+    public function setQuantite(float $quantite):static
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
 }
 ?>

@@ -6,54 +6,172 @@ class RepMatPremDTO{
     private ?string $nom = null;
     private ?string $nomCour = null;
     private ?float $pmAvantCuisson = null;
+    private ?array $oxydes;
+    private ?int $ordre = null;
+    private bool $flagEtat = false;
+    private ?string $avertissement = null;
 
 
-    private ?int $type = null;
-    private ?int $ordre = 0;
 
-    public function setId(?int $id):static{
-        $this->id = $id;
-        return $this;
-    }
-    public function setNom(?string $nom):static{
-        $this->nom = $nom;
-        return $this;
-    }
-    public function setFormule(?string $formule):static{
-        $this->formule = $formule;
-        return $this;
-    }
-    public function setType(?int $type):static{
-        $this->type = $type;
-        return $this;
-    }
-    public function setOrdre(?int $ordre):static{
-        $this->ordre = $ordre;
-        return $this;
-    }
-    public function setFlagEtat(?bool $actif):static{
-        $this->flagEtat = $flagEtat;
-        return $this;
-    }
 
-    public function getId():?int{
+    /**
+     * Get the value of id
+     */ 
+    public function getId():int
+    {
         return $this->id;
     }
-    public function getNom():?string{
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId(int $id):static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nom
+     */ 
+    public function getNom():string
+    {
         return $this->nom;
     }
-    public function getFormule():?string{
-        return $this->formule;
+
+    /**
+     * Set the value of nom
+     *
+     * @return  self
+     */ 
+    public function setNom(string $nom):static
+    {
+        $this->nom = $nom;
+
+        return $this;
     }
-    public function getType():?int{
-        return $this->type;
+
+    /**
+     * Get the value of nomCour
+     */ 
+    public function getNomCour():string
+    {
+        return $this->nomCour;
     }
-    public function getOrdre():?int{
+
+    /**
+     * Set the value of nomCour
+     *
+     * @return  self
+     */ 
+    public function setNomCour(string $nomCour):static
+    {
+        $this->nomCour = $nomCour;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pmAvantCuisson
+     */ 
+    public function getPmAvantCuisson():?float
+    {
+        return $this->pmAvantCuisson;
+    }
+
+    /**
+     * Set the value of pmAvantCuisson
+     *
+     * @return  self
+     */ 
+    public function setPmAvantCuisson(?float $pmAvantCuisson):static
+    {
+        $this->pmAvantCuisson = $pmAvantCuisson;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of oxydes
+     */ 
+    public function getOxydes():array
+    {
+        return $this->oxydes;
+    }
+
+    /**
+     * Set the value of oxydes
+     *
+     * @return  self
+     */ 
+    public function setOxydes(array $oxydes):static
+    {
+        $this->oxydes = $oxydes;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ordre
+     */ 
+    public function getOrdre():?int
+    {
         return $this->ordre;
     }
-    public function getFlagEtat():?bool{
+
+    /**
+     * Set the value of ordre
+     *
+     * @return  self
+     */ 
+    public function setOrdre(?int $ordre):static
+    {
+        $this->ordre = $ordre;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of flagEtat
+     */ 
+    public function getFlagEtat():bool
+    {
         return $this->flagEtat;
     }
 
+    /**
+     * Set the value of flagEtat
+     *
+     * @return  self
+     */ 
+    public function setFlagEtat(bool $flagEtat):static
+    {
+        $this->flagEtat = $flagEtat;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of avertissement
+     */ 
+    public function getAvertissement():?string
+    {
+        return $this->avertissement;
+    }
+
+    /**
+     * Set the value of avertissement
+     *
+     * @return  self
+     */ 
+    public function setAvertissement(?string $avertissement) :static
+    {
+        $this->avertissement = $avertissement;
+
+        return $this;
+    }
 }
 ?>

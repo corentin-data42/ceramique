@@ -59,7 +59,6 @@ class RepositoryQueryAdaptateur implements RepositoryQueryPort{
             $maPrem->getQuantite()->initialize();
             $arrMatPremDTO[]=MatPremDTOMapper::toDTO($maPrem);
         }
-        dd($arrMatPrem);
         return $arrMatPremDTO;
     }
     

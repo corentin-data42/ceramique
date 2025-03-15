@@ -30,15 +30,15 @@ class MatierePremiere{
         $this->nomCour =$nomCour;
         return $this;
     }
-    public function setAvertissement(string $avertissement):static{
+    public function setAvertissement(?string $avertissement):static{
         $this->avertissement =$avertissement;
         return $this;
     }
-    public function setPmAvantCuisson(float $pmAvantCuisson):static{
+    public function setPmAvantCuisson(?float $pmAvantCuisson):static{
         $this->pmAvantCuisson =$pmAvantCuisson;
         return $this;
     }
-    public function setOrdre(int $ordre):static{
+    public function setOrdre(?int $ordre):static{
         $this->ordre =$ordre;
         return $this;
     }
@@ -57,13 +57,13 @@ class MatierePremiere{
     public function getNomCour():string{
         return $this->nomCour;
     }
-    public function getAvertissement():string{
+    public function getAvertissement():?string{
         return $this->avertissement;
     }
-    public function getPmAvantCuisson():float{
+    public function getPmAvantCuisson():?float{
         return $this->pmAvantCuisson;
     }
-    public function getOrdre():int{
+    public function getOrdre():?int{
         return $this->ordre;
     }
     public function getFlagEtat():bool{

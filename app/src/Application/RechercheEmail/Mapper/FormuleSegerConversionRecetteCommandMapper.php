@@ -12,12 +12,7 @@ class FormuleSegerConversionRecetteCommandMapper{
     public static function fromDTOToFormuleSeger(
             FormuleSegerConversionRecetteCommand $commandDto,
             $repositoryQuery):FormuleSeger {
-        /// constusruire les oxyde ici est les ajouter a lobjet value seger ???
-        // faire appelle database port ici ???
-        /// 
-        // $oxyde 
-        
-        //$recherEmailPort = RechercheEmailPort::getInstance();
+
         $arrIdOxydes=[];
         foreach($commandDto->getOxydes() as $idOxyde=>$quantiteOxyde){
            array_push($arrIdOxydes,$idOxyde); 

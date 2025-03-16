@@ -25,9 +25,11 @@
         }
         private function browseAndMap($repositoryResult):array{
             $arrOxydeDto=[];
+
             foreach($repositoryResult as $repOxDTO){
                 array_push($arrOxydeDto,RepOxDTOMapper::fromDTO($repOxDTO));
             }
+
             return $arrOxydeDto;
         }
     }

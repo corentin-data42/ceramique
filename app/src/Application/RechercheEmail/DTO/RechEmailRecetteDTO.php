@@ -1,14 +1,13 @@
 <?php
 namespace Application\RechercheEmail\DTO;
 
-class RechEmailOxDTO{
+class RechEmailRecetteDTO{
     private ?int $id = null;
     private ?string $nom = null;
     private ?string $formule = null;
     private ?int $type = null;
     private ?int $ordre = null;
     private ?bool $flagEtat = null;
-    private ?float $quantite = null;
     public function setId(?int $id):static{
         $this->id = $id;
         return $this;
@@ -53,25 +52,5 @@ class RechEmailOxDTO{
         return $this->flagEtat;
     }
 
-
-    /**
-     * Get the value of quantite
-     */ 
-    public function getQuantite():?float
-    {
-        return $this->quantite;
-    }
-
-    /**
-     * Set the value of quantite
-     *
-     * @return  self
-     */ 
-    public function setQuantite(?float $quantite):static
-    {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
 }
 ?>

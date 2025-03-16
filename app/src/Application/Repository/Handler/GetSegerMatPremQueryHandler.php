@@ -1,6 +1,6 @@
 <?php
     namespace Application\Repository\Handler;
-    
+    use Domain\RechercheEmail\Object\StockMatieresPremieres;
     use Application\Repository\DTO\RepMatPremDTOMapper;
     use Application\Repository\Query\GetSegerMatPremQuery;
     use Application\Repository\Port\RepositoryQueryPort;
@@ -13,13 +13,13 @@
         ){   
         }
 
-        public function handle(GetSegerMatPremQuery $query):array{
+        public function handle(GetSegerMatPremQuery $query):StockMatieresPremieres{
             
             $repositoryResult = $this->RepositoryQueryPort->getMatPremByIdOxyde($query->getId(),$query->getActiveOnly());
-            $arrMatPrem=[];
+            $stock = new StockMatieresPremieres();
             foreach($repositoryResult as $repDTO){
-                $arrMatPrem[]=RepMatPremDTOMapper::fromDTO($repDTO);
+                $stock->add(RepMatPremDTOMapper::fromDTO($repDTO));
             }
-            return $arrMatPrem;
+            return $stock;
         }
     }

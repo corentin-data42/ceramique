@@ -21,9 +21,13 @@ final class SegerColonneBasiqueConstraintValidator extends ConstraintValidator
 
                 $totalvalueBasique += $value[$oxyde->getId()]['quantite'];
             }
+            //
         }
-        
-        if($totalvalueBasique<>1){
+        //
+     
+        if(round($totalvalueBasique,4)<>round(1.0,4)){
+            
+
             $this->context->buildViolation($constraint->message)
             //->setParameter('{{ value }}', $value)
             ->addViolation()

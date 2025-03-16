@@ -57,7 +57,7 @@ class RepOxDTO{
     /**
      * Get the value of quantite
      */ 
-    public function getQuantite():float
+    public function getQuantite():?float
     {
         return $this->quantite;
     }
@@ -67,7 +67,7 @@ class RepOxDTO{
      *
      * @return  self
      */ 
-    public function setQuantite(float $quantite):static
+    public function setQuantite(?float $quantite):static
     {
         $this->quantite = $quantite;
 

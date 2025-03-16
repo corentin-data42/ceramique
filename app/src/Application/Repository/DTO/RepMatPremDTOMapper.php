@@ -1,12 +1,22 @@
 <?php namespace Application\Repository\DTO;
 
 use Domain\Common\Object\MatierePremiere;
+use Domain\Common\Object\Collection;
 
 use Application\Repository\DTO\RepOxDTOMapper;
 use Application\Repository\DTO\RepMatPremDTO;
 
+/**
+ *  Todo chargement des oxydes dans toDTO(MatierePremiere)
+ */
+
 class RepMatPremDTOMapper{
-    public static function toDTO(MatierePremiere $matierePremiere) {
+
+    /**
+     * @dto MatierePremiere
+     * return RepMatPremDTO
+     */
+    public static function toDTO(MatierePremiere $matierePremiere):RepMatPremDTO {
 
         /*
             RepMatPremDTO
@@ -29,6 +39,11 @@ class RepMatPremDTOMapper{
         $dto->setAvertissement($matierePremiere->getAvertissement());
         return $dto;
     }
+
+    /**
+     * @dto RepMatPremDTO
+     * return MatierePremiere
+     */
     public static function fromDTO(RepMatPremDTO $dto):MatierePremiere {
         $matierePremiere = new MatierePremiere();
         $matierePremiere->setId($dto->getId());
@@ -39,9 +54,9 @@ class RepMatPremDTOMapper{
         $matierePremiere->setFlagEtat($dto->getFlagEtat());
         $matierePremiere->setAvertissement($dto->getAvertissement());
         foreach($dto->getOxydes() as $oxydeDTO){
-            $matierePremiere->addOxyde(RepOxDTOMapper::fromDTO($oxydeDTO));
+            $oxyde = RepOxDTOMapper::fromDTO($oxydeDTO);
+            $matierePremiere->addOxyde($oxyde);
         }
-        //dump($dto->getOxydes());
         return $matierePremiere;
     }
 }

@@ -16,6 +16,7 @@ class OxydeDTOMapper{
         return $oxyde;
     }
     public static function toDTO(Oxyde $oxyde):RepOxDTO {
+
         $dto = new RepOxDTO();
         $dto->setId($oxyde->getId())
             ->setNom($oxyde->getNom())
@@ -23,6 +24,7 @@ class OxydeDTOMapper{
             ->setType($oxyde->getType())
             ->setOrdre($oxyde->getOrdre())
             ->setFlagEtat($oxyde->getFlagEtat());
+
         return $dto;
     }
 }

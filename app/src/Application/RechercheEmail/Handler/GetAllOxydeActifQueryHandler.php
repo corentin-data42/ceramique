@@ -34,7 +34,6 @@
         }
         private function browseAndMap($arrDomainOx){
             $arrOxydeDto=[];
-
             foreach($arrDomainOx as $oxyde){
                 array_push($arrOxydeDto,RechEmailOxDTOMapper::toDTO($oxyde));
             }

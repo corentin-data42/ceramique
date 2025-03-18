@@ -8,10 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Validator as AcmeAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: OxydeRepository::class)]
 #[ORM\Table(name: 'oxyde')]
+#[UniqueEntity('formule')]
 class Oxyde
 {
     #[ORM\Id]
@@ -26,6 +28,7 @@ class Oxyde
 
     #[ORM\Column]
     #[Assert\NotBlank]
+    #[Assert\Positive]
     private ?float $pm = null;
 
     #[ORM\Column(length: 255)]

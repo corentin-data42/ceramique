@@ -1,0 +1,11 @@
+App\Entity\Oxyde:
+    oxyde:
+        nom: <username()>
+        pm: 101.1
+        formule: "SbO"
+        type: "1"
+        ordre: 
+        flagEtat: true
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        #quantite:

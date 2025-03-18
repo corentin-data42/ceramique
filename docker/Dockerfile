@@ -12,6 +12,9 @@ RUN docker-php-ext-install intl
 RUN docker-php-ext-enable intl
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-enable pdo_mysql
+
+#RUN docker-php-ext-install pdo_sqlite
+#RUN docker-php-ext-enable pdo_sqlite
 #RUN docker-php-ext-install opcache pdo pdo_mysql mysqli
 #RUN docker-php-ext-enable opcache pdo pdo_mysql mysqli
 #RUN pecl install apcu

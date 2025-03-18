@@ -1,0 +1,13 @@
+App\Entity\Oxyde:
+    oxyde{1..10}:
+        #email: user<current()>\@domain.fr
+        nom: <username()>
+        pm: 101.1
+        formule: "0000"
+        type: "1"
+        ordre: 
+        flagEtat: true
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        #quantite:
+

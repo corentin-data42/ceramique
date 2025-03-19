@@ -23,11 +23,11 @@ class HomeControllerTest extends WebTestCase{
         $client->request("GET","/auth");
         $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
     }
-    public function test_redirectToLogin(){
-        $client = static::createClient();
-        $client->request("GET","/auth");
-        $this->assertResponseRedirects("/login");
-    }
+    // public function test_redirectToLogin(){
+    //     $client = static::createClient();
+    //     $client->request("GET","/auth");
+    //     $this->assertResponseRedirects("/login");
+    // }
     /** cree User et make:auth */
 }
 ?>

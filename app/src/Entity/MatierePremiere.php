@@ -6,9 +6,13 @@ use App\Repository\MatierePremiereRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: MatierePremiereRepository::class)]
 #[ORM\Table(name: 'matiere_premiere')]
+
 class MatierePremiere
 {
     #[ORM\Id]
@@ -17,9 +21,12 @@ class MatierePremiere
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
     private ?string $nom = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Positive]
     private ?float $pmAvantCuisson = null;
 
     #[ORM\Column(nullable: true)]
@@ -44,6 +51,8 @@ class MatierePremiere
     private ?string $avertissement = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Type('string')]
     private ?string $nomCour = null;
 
     public function __construct()

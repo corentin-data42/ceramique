@@ -1,0 +1,12 @@
+App\Entity\MatierePremiere:
+    matierePremiere:
+        nom: Nom unique de matiere Premiere
+        nomCour : <username()>
+        pmAvantCuisson: 101.1
+        ordre: 
+        flagEtat: true
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        avertissement:
+
+        #quantite:

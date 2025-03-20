@@ -1,0 +1,30 @@
+# App\Entity\MatierePremiere:
+#     matierePremiere{1..10}:
+#         nom: Nom unique de matiere Premiere
+#         nomCour : <username()>
+#         pmAvantCuisson: 101.1
+#         ordre: 
+#         flagEtat: true
+#         creationAt: <(new DateTimeImmutable('now'))>
+#         modificationAt: <(new DateTimeImmutable('now'))>
+#         avertissement:
+#         quantite: '@matierePremiereOxydeQuantite{1..10}'
+
+# App\Entity\MatierePremiereOxydeQuantite:
+#     matierePremiereOxydeQuantite{1..10}:
+#         matierePremiere: '@matierePremiere1'
+#         oxyde: '@oxyde'
+#         quantite: 12.3
+
+App\Entity\Oxyde:
+    oxyde:
+        id: 1
+        nom: <username()>
+        pm: 101.1
+        formule: "SbO"
+        type: "1"
+        ordre: 
+        flagEtat: true
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        #quantite: '@matierePremiereOxydeQuantite{1..10}'

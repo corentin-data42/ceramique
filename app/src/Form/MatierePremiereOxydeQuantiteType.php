@@ -12,6 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class MatierePremiereOxydeQuantiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -20,6 +22,7 @@ class MatierePremiereOxydeQuantiteType extends AbstractType
             
             ->add('oxyde', EntityType::class, [
                 'class' => Oxyde::class,
+                
                 'label'=>' ',
                 'choice_label' => 'formule',
                 'attr'=>[

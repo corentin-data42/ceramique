@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php 
 
 namespace App\Entity;
 
@@ -12,7 +12,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MatierePremiereRepository::class)]
 #[ORM\Table(name: 'matiere_premiere')]
-
+#[UniqueEntity(
+    fields: ['nom'],
+    message: 'La matiere premiere existe deja',
+    errorPath: 'nom',
+)]
 class MatierePremiere
 {
     #[ORM\Id]
@@ -45,6 +49,7 @@ class MatierePremiere
      * @var Collection<int, MatierePremiereOxydeQuantite>
      */
     #[ORM\OneToMany(targetEntity: MatierePremiereOxydeQuantite::class, mappedBy: 'matierePremiere', orphanRemoval: true, cascade: ['persist'])]
+    #[Assert\Valid()]
     private Collection $quantite;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -67,7 +72,8 @@ class MatierePremiere
 
     public function setId(int $id): static
     {   
-        $this->$id = $id;
+        $this->id = $id;
+
         return $this;
     }
 

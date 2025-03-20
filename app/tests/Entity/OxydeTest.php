@@ -28,7 +28,7 @@ class OxydeTest extends KernelTestCase{
         $entity = (new Oxyde())
             ->setNom("Oxyde d'antimoine")
             ->setPm(137.7594)
-            ->setFormule("SbO")
+            ->setFormule("Sb8")
             ->setType(rand(1,3))
             ->setOrdre(rand(0,10))
             ->setFlagEtat(true)
@@ -59,10 +59,6 @@ class OxydeTest extends KernelTestCase{
         $this->assertHasError($this->getEntity(),0);
         
     }
-
-
-
-
     public function test_invalidEntity():void{
         $this->assertHasError($this->getEntity()->setType(4),1);
     }
@@ -80,11 +76,9 @@ class OxydeTest extends KernelTestCase{
     }
     public function test_invalidEntityUsedFormule():void{
         $this->databaseTool->loadAliceFixture([
-            __DIR__ ."/../Fixtures/oxyde.yaml",
+            __DIR__ ."/oxydeTestFixtures.yaml",
         ]) ;
-
-        $this->assertHasError($this->getEntity()->setFormule("SbO"),1);
-      
+        $this->assertHasError($this->getEntity()->setFormule("SbO"),1); 
     }
 }
 

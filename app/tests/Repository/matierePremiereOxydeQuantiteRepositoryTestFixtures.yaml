@@ -1,0 +1,5 @@
+App\Entity\MatierePremiereOxydeQuantite:
+    matierePremiereOxydeQuantite{1..10}:
+        quantite: 10.564
+        matierePremiere: '@matierePremiere1'
+        oxyde: '@oxyde1'

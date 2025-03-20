@@ -1,6 +1,6 @@
 App\Entity\MatierePremiere:
-    matierePremiere:
-        nom: Nom unique de matiere Premiere
+    matierePremiere{1..10}:
+        nom: <username()>
         nomCour : <username()>
         pmAvantCuisson: 101.1
         ordre: 
@@ -8,5 +8,4 @@ App\Entity\MatierePremiere:
         creationAt: <(new DateTimeImmutable('now'))>
         modificationAt: <(new DateTimeImmutable('now'))>
         avertissement:
-
-        #quantite:
+        #quantite: '@matierePremiereOxydeQuantite_*'

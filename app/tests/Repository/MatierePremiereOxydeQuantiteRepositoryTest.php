@@ -4,10 +4,10 @@ namespace App\Tests\Repository;
 
 use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
 use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
-use App\Repository\OxydeRepository;
+use App\Repository\MatierePremiereOxydeQuantiteRepository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class OxydeRepositoryTest extends KernelTestCase
+class MatierePremiereOxydeQuantiteRepositoryTest extends KernelTestCase
 {
     /** @var AbstractDatabaseTool */
     protected $databaseTool;
@@ -22,13 +22,16 @@ class OxydeRepositoryTest extends KernelTestCase
     }
 
 public function testCount(){
-
-    $oxydes = $this->databaseTool->loadAliceFixture([
+    $RepFixtures = $this->databaseTool->loadAliceFixture([
+       
+        __DIR__ ."/matierePremiereRepositoryTestFixtures.yaml",
         __DIR__ ."/oxydeRepositoryTestFixtures.yaml",
+        __DIR__ ."/matierePremiereOxydeQuantiteRepositoryTestFixtures.yaml",
     ]) ;
-    //$oxydes['oxyde1'];
-    $oxydes = self::getContainer()->get(OxydeRepository::class)->count([]);
-    $this->assertEquals(10, $oxydes);
+
+    $count = self::getContainer()->get(MatierePremiereOxydeQuantiteRepository::class)->count([]);
+
+    $this->assertEquals(10, $count);
 }
 }
 ?>

@@ -7,6 +7,7 @@ USER root
 RUN apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev curl libonig-dev libicu-dev
 
 #installation extension php
+
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 RUN docker-php-ext-enable intl
@@ -24,10 +25,10 @@ RUN docker-php-ext-enable pdo_mysql
 
 #install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
+COPY php.ini /usr/local/etc/php/php.ini
 #test
 HEALTHCHECK CMD curl --fail http://localhost/index.php || exit 1
-COPY php.ini /usr/local/etc/php/php.ini
+
 USER www-data
 
 

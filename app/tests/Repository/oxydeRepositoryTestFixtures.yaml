@@ -9,5 +9,4 @@ App\Entity\Oxyde:
         flagEtat: true
         creationAt: <(new DateTimeImmutable('now'))>
         modificationAt: <(new DateTimeImmutable('now'))>
-        #quantite:
 

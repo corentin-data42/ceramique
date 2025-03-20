@@ -1,0 +1,33 @@
+App\Entity\MatierePremiereOxydeQuantite:
+    matierePremiereOxydeQuantite:
+        id: 1
+        quantite: 10.565
+        matierePremiere: '@matierePremiere'
+        oxyde: '@oxyde'
+
+App\Entity\Oxyde:
+    oxyde:
+        id: 1
+        nom: test
+        pm: 101.1
+        formule: "SbO"
+        type: "1"
+        ordre: 
+        flagEtat: true
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        #quantite: ['@matierePremiereOxydeQuantite']
+
+App\Entity\MatierePremiere:
+    matierePremiere:
+        id: 2
+        nom: Matieres Premiere de tests
+        nomCour : test nom cour
+        pmAvantCuisson: 
+        ordre: 
+        flagEtat: true
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        avertissement: test avertissement
+        quantite: ['@matierePremiereOxydeQuantite']
+

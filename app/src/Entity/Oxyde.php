@@ -61,6 +61,7 @@ class Oxyde
      * @var Collection<int, MatierePremiereOxydeQuantite>
      */
     #[ORM\OneToMany(targetEntity: MatierePremiereOxydeQuantite::class, mappedBy: 'oxyde', orphanRemoval: true)]
+    #[Assert\Valid()]
     private Collection $quantite;
 
     public function __construct()
@@ -180,6 +181,11 @@ class Oxyde
     public function getQuantite(): Collection
     {
         return $this->quantite;
+    }
+    public function setQuantite(Collection $quantite): static
+    {
+        $this->quantite =$quantite;
+        return $this;
     }
 
     public function addQuantite(MatierePremiereOxydeQuantite $quantite): static

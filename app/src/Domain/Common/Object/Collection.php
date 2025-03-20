@@ -3,7 +3,7 @@ namespace Domain\Common\Object;
 
 class Collection 
 {
-    private array $items = array();
+    private array $items = [];
     private int $currentKey = 0;
 
 
@@ -28,7 +28,7 @@ class Collection
         }
         else {
             if (isset($this->items[$key])) {
-                //throw new Exception("Key $key already in use.");
+                throw new \Exception("Key $key already in use.");
             }
             else {
                 $this->items[$key] = $obj;

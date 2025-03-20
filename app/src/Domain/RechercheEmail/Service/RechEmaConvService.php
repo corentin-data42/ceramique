@@ -6,7 +6,7 @@ namespace Domain\RechercheEmail\Service;
  */
  use Domain\RechercheEmail\Object\ValueObject\FormuleSeger;
  use Domain\RechercheEmail\Object\Recette;
- use Domain\RechercheEmail\Object\RecetteMatierePremiere;
+ use Domain\RechercheEmail\Object\MatierePremiereRecette;
  use Domain\Common\Object\MatierePremiere;
  use Domain\RechercheEmail\Object\StockMatieresPremieres;
 
@@ -33,8 +33,8 @@ namespace Domain\RechercheEmail\Service;
     }
 
     /**
-     * @param matieresPremieres array MatierePremiere
-     * return array MatierePremiere
+     * @param StockMatieresPremieres Collection MatierePremiere
+     * return Collection MatierePremiere
      * 
      *
      * on va verifier si on doit placer la matiere premiere en debut de la liste des matieres premieres a traiter
@@ -91,7 +91,7 @@ namespace Domain\RechercheEmail\Service;
                         $stockRetour->add($matierePremiere);
                     }else{
                         // on la place devand
-                        $stockRetour->addBefore($matierePremiere);
+                        $stockRetour->add($matierePremiere,true);
                     }
                 }
             }

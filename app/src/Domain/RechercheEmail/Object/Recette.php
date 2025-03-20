@@ -30,14 +30,14 @@ class Recette{
         $this->matieresPremieres=$matieresPremieres;
         return $this;
     }
-    public function addMatierePremiere(RecetteMatierePremiere $matierePremiere):static
+    public function addMatierePremiere(MatierePremiereRecette $matierePremiere):static
     {
         if(!$this->matieresPremieres->contains($matierePremiere)){
             $this->matieresPremieres->add($matierePremiere);
         }
         return $this;
     }
-    public function removeMatierePremiere(RecetteMatierePremiere $matierePremiere):static
+    public function removeMatierePremiere(MatierePremiereRecette $matierePremiere):static
     {   
         if($this->matieresPremieres->contains($matierePremiere)){
             $this->matieresPremieres->remove($matierePremiere);

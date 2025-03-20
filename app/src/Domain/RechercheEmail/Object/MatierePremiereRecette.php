@@ -3,7 +3,7 @@ namespace Domain\RechercheEmail\Object;
 
 use Domain\Common\Object\MatierePremiere;
 
-class RecetteMatierePremiere extends MatierePremiere{
+class MatierePremiereRecette extends MatierePremiere{
 
     protected ?float $quantite = null;
     

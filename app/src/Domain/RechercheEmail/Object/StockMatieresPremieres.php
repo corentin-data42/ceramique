@@ -8,7 +8,7 @@ use Domain\Common\Object\MatierePremiere;
 
 class StockMatieresPremieres{
     
-    private ?Collection $matieresPremieres = null;
+    protected ?Collection $matieresPremieres = null;
     
     public function __construct()
     {
@@ -24,24 +24,14 @@ class StockMatieresPremieres{
      * @matierePremiere MatierePremiere
      * return Static
      */
-    public function add(MatierePremiere $matierePremiere):static
+    public function add(MatierePremiere $matierePremiere, $before=false):static
     {
         if(!$this->matieresPremieres->contains($matierePremiere)){
-            $this->matieresPremieres->add($matierePremiere);
+            $this->matieresPremieres->add($matierePremiere, unshift:$before);
         }
         return $this;
     }
-    /**
-     * @matierePremiere MatierePremiere
-     * return Static
-     */
-    public function addBefore(MatierePremiere $matierePremiere):static
-    {
-        if(!$this->matieresPremieres->contains($matierePremiere)){
-            $this->matieresPremieres->add($matierePremiere,unshift:true);
-        }
-        return $this;
-    }
+
     /**
      * @matierePremiere MatierePremiere
      * return Static

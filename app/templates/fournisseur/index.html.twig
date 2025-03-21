@@ -22,7 +22,7 @@
                     <a href={{ path('fournisseur.show',{ id:fournisseur.id }) }}>{{ fournisseur.nom }}</a>
                 </td>
                 <td>
-                    {{ fournisseur.flagEtat }}
+                    {{ fournisseur.flagEtat ? 'Actif' : 'Inactif' }}
                 </td>
                 <td>
                     <div class="d-flex gap-1">

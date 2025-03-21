@@ -49,6 +49,7 @@ class Oxyde
     private ?int $ordre = 0;
 
     #[ORM\Column]
+    #[Assert\Type('bool')]
     private ?bool $flagEtat = null;
 
     #[ORM\Column]

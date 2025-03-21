@@ -1,3 +1,12 @@
+App\Entity\Fournisseur:
+    fournisseur:
+        id: 1
+        nom: test
+        flagEtat: true
+        matierePremieres: ['@matierePremiere']
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+
 App\Entity\MatierePremiereOxydeQuantite:
     matierePremiereOxydeQuantite:
         id: 1
@@ -29,4 +38,5 @@ App\Entity\MatierePremiere:
         creationAt: <(new DateTimeImmutable('now'))>
         modificationAt: <(new DateTimeImmutable('now'))>
         avertissement:
+        fournisseur: '@fournisseur'
         quantite: ['@matierePremiereOxydeQuantite']

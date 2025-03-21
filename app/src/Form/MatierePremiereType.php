@@ -2,9 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Fournisseur;
 use App\Entity\MatierePremiere;
 
 use App\Form\MatierePremiereOxydeQuantiteType;
+use App\Repository\FournisseurRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,6 +17,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormEvents;
+
+use Doctrine\ORM\QueryBuilder;
 
 class MatierePremiereType extends AbstractType
 {
@@ -34,6 +39,20 @@ class MatierePremiereType extends AbstractType
                     
                 ],
                 'label_attr' => ['class' => 'btn btn-outline-success']
+            ])
+            ->add('fournisseur',EntityType::class,[
+                'required'=>false,
+                'empty_data' => '',
+                'placeholder'=>'Matière première théorique',
+                'class' => Fournisseur::class,
+                'choice_label' => 'nom',
+                // 'query_builder'=> function (FournisseurRepository $er): QueryBuilder {
+                //     return $er->createQueryBuilder('f')
+                //     ->andWhere('f.flagEtat = true')
+                //     ->orderBy('f.id', 'ASC');
+                // },
+                
+                
             ])
             ->add('quantite', CollectionType::class, [
                 'label'=>'Oxydes',

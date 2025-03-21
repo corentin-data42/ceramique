@@ -2,6 +2,7 @@
 
 namespace App\Tests\Entity;
 
+use App\Entity\Fournisseur;
 use App\Entity\MatierePremiere;
 use App\Entity\MatierePremiereOxydeQuantite;
 use App\Entity\Oxyde;
@@ -28,6 +29,14 @@ class MatierePremiereTest extends KernelTestCase{
     }
     
     public function getEntity():MatierePremiere{
+        $fournisseur = (new Fournisseur())
+                        ->setId(2)
+                        ->setNom('fournisseur de test')
+                        ->setFlagEtat(true)
+                        ->setCreationAt(new \DateTimeImmutable("now"))
+                        ->setModificationAt(new \DateTimeImmutable("now"));
+
+
         $entity = (new MatierePremiere())
             ->setId(1)
             ->setNom("MatierePremiere de test")
@@ -42,6 +51,8 @@ class MatierePremiereTest extends KernelTestCase{
             //                             ->setOxyde((new Oxyde())->setId(1))
             //                             ->setMatierePremiere((new MatierePremiere())->setId(1))
             //                             );
+        $fournisseur->addMatierePremiere($entity);
+        $entity->setFournisseur($fournisseur);
         return $entity;
     }
 
@@ -84,11 +95,15 @@ class MatierePremiereTest extends KernelTestCase{
         $this->assertHasError($this->getEntity()->setPmAvantCuisson(0.0),1);
     }
 
-    public function test_invalidEntityUsedNom():void{
+    public function test_invalidEntityUsedNomFournisseur():void{
         $entiteDb = $this->databaseTool->loadAliceFixture([
             __DIR__ ."/matierePremiereTestFixtures.yaml",
         ]);
-        $this->assertHasError($this->getEntity()->setNom("Nom unique"),1,false); 
+        $entity = $this->getEntity();
+        $entity->setNom("Nom unique");
+        $this->assertHasError($entity,0,false);
+        $entity->getFournisseur()->setId(1);
+        $this->assertHasError($entity,1,false); 
     }
 }
 

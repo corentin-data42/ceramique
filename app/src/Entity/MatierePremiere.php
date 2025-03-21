@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: MatierePremiereRepository::class)]
 #[ORM\Table(name: 'matiere_premiere')]
 #[UniqueEntity(
-    fields: ['nom'],
+    fields: ['nom','fournisseur'],
     message: 'La matiere premiere existe deja',
     errorPath: 'nom',
 )]
@@ -37,6 +37,7 @@ class MatierePremiere
     private ?int $ordre = null;
 
     #[ORM\Column()]
+    #[Assert\Type('bool')]
     private bool $flagEtat = false;
 
     #[ORM\Column]

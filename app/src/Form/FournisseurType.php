@@ -30,7 +30,6 @@ class FournisseurType extends AbstractType
                 'attr'=>[
                     'class'=>'btn-check',
                     'autocomplete'=>"off",
-                    'empty_data'=>false,
                 ],
                 'label_attr'=>[
                     'class'=> 'btn btn-outline-success',

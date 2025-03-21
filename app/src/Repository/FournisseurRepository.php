@@ -16,6 +16,29 @@ class FournisseurRepository extends ServiceEntityRepository
         parent::__construct($registry, Fournisseur::class);
     }
 
+    // public function findAllActif(): array{
+    //     //$entityManager = $this->getEntityManager();
+    //     return $this->findBy(
+    //         ['flagEtat' => true]
+    //     );
+
+    // }
+    /**
+    * @return Fournisseur Returns an array or QueryBuilder of Fournisseur objects
+    */
+    public function findAllActif(?bool $returnQueryBuilder=false): mixed
+    {
+        $queryBuilder = $this->createQueryBuilder('f')
+        ->andWhere('f.flagEtat = true')
+        ->orderBy('f.id', 'ASC');
+        if($returnQueryBuilder){
+            return $queryBuilder;
+        }
+        return ($queryBuilder)->getQuery()
+        ->getResult();
+    }
+
+
     //    /**
     //     * @return Fournisseur[] Returns an array of Fournisseur objects
     //     */

@@ -12,8 +12,8 @@
         <thead>
             <tr>
                 <th></th>
-
-                <th>active</th>
+                <th>Fournisseur</th>
+                <th></th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,9 +23,11 @@
                     <td>
                         <a href={{ path('matiere_premiere.show',{ id:matierepremiere.id }) }}>{{ matierepremiere.nom }}</a>
                     </td>
-               
                     <td>
-                        {{ matierepremiere.flagEtat }}
+                        {{ matierepremiere.fournisseur ? matierepremiere.fournisseur.nom : '-' }}
+                    </td>
+                    <td>
+                        {{ matierepremiere.flagEtat ? 'Active' : 'Inactive' }}
                     </td>
                     <td>
                         <div class="d-flex gap-1">

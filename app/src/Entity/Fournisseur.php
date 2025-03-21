@@ -24,13 +24,13 @@ class Fournisseur
     private ?string $nom = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank]
-    private ?bool $flagEtat = null;
+    #[Assert\Type('bool')]
+     private ?bool $flagEtat = null;
 
     /**
      * @var Collection<int, MatierePremiere>
      */
-    #[ORM\OneToMany(targetEntity: MatierePremiere::class, mappedBy: 'fournisseur')]
+    #[ORM\OneToMany(targetEntity: MatierePremiere::class, mappedBy: 'fournisseur', cascade: ['persist'])]
     private Collection $matierePremieres;
 
     #[ORM\Column]

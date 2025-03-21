@@ -60,6 +60,9 @@ class MatierePremiere
     #[Assert\Type('string')]
     private ?string $nomCour = null;
 
+    #[ORM\ManyToOne(inversedBy: 'matierePremieres')]
+    private ?Fournisseur $fournisseur = null;
+
     public function __construct()
     {
         $this->quantite = new ArrayCollection();
@@ -202,4 +205,17 @@ class MatierePremiere
 
         return $this;
     }
+
+    public function getFournisseur(): ?Fournisseur
+    {
+        return $this->fournisseur;
+    }
+
+    public function setFournisseur(?Fournisseur $fournisseur): static
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
 }

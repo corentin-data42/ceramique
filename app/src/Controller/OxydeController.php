@@ -28,9 +28,8 @@ final class OxydeController extends AbstractController
         $form = $this->createForm(OxydeType::class,$oxyde);
         $form->handleRequest($request);
         
-        if ($form->isSubmitted()){
+        if ($form->isSubmitted() && $form->isValid()){
             
-           
             $em->persist($oxyde);
             $em->flush();
             $this->addFlash('success','l\'oxyde a bien été créé');

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste des fournisseurs{% endblock %}
+
+{% block body %}
+<p>
+    liste des fournisseurs :
+</p>
+<a class="btn btn-sm btn-primary" href={{ path('fournisseur.create')}}>Créer un nouveau fournisseur</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Founisseur</th>
+            <th>actif</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for fournisseur in fournisseurs %}
+            <tr>
+                <td>
+                    <a href={{ path('fournisseur.show',{ id:fournisseur.id }) }}>{{ fournisseur.nom }}</a>
+                </td>
+                <td>
+                    {{ fournisseur.flagEtat }}
+                </td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a class="btn btn-sm btn-primary" href={{ path('fournisseur.edit',{ id:fournisseur.id })}}>Modifier</a>
+                        <form action="{{ path('fournisseur.remove',{ id:fournisseur.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-sm btn-danger" >Supprimer</a>
+                        </form>
+                    </div>
+                    
+                </td>
+                
+            </tr>
+    {% endfor %}
+    </tbody
+    
+
+</table>
+{% endblock %}

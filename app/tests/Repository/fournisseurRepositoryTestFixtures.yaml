@@ -1,0 +1,5 @@
+App\Entity\Fournisseur:
+    fournisseur{1..10}:
+        id: <current()>
+        nom: fournisseur_<current()>
+        flagEtat: true

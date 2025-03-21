@@ -1,0 +1,5 @@
+App\Entity\Fournisseur:
+    fournisseur:
+        id: 1
+        nom: nomTest Unique
+        flagEtat: true

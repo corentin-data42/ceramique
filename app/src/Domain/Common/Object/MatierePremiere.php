@@ -3,6 +3,7 @@ namespace Domain\Common\Object;
 
 use Domain\Common\Object\Collection;
 use Domain\Common\Object\Oxyde;
+use Domain\Common\Object\Fournisseur;
 
 class MatierePremiere{
     protected ?int $id = null;
@@ -12,6 +13,7 @@ class MatierePremiere{
     protected ?float $pmAvantCuisson = null;
     protected ?int $ordre = null;
     protected ?bool $flagEtat = null; 
+    protected ?Fournisseur $fournisseur = null;
     protected ?Collection $oxydes = null;
 
     public function __construct()
@@ -42,6 +44,10 @@ class MatierePremiere{
         $this->ordre =$ordre;
         return $this;
     }
+    public function setFournisseur(?Fournisseur $fournisseur):static{
+        $this->fournisseur =$fournisseur;
+        return $this;
+    }
     public function setFlagEtat(bool $flagEtat):static{
         $this->flagEtat= $flagEtat;
         return $this;
@@ -65,6 +71,9 @@ class MatierePremiere{
     }
     public function getOrdre():?int{
         return $this->ordre;
+    }
+    public function getFournisseur():?Fournisseur{
+        return $this->fournisseur;
     }
     public function getFlagEtat():bool{
         return $this->flagEtat;

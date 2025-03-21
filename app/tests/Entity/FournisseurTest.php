@@ -39,7 +39,9 @@ class FournisseurTest extends KernelTestCase{
         $entity = (new Fournisseur())
             ->setId(2)
             ->setNom("nomTest")
-            ->setFlagEtat(true);
+            ->setFlagEtat(true)
+            ->setCreationAt(new \DateTimeImmutable("now"))
+            ->setModificationAt(new \DateTimeImmutable("now"));
         return $entity;
     }
 

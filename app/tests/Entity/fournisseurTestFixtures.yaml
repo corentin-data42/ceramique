@@ -3,3 +3,5 @@ App\Entity\Fournisseur:
         id: 1
         nom: nomTest Unique
         flagEtat: true
+        creationAt: <(new DateTimeImmutable('now - 1 day'))>
+        modificationAt : <(new DateTimeImmutable('now'))>

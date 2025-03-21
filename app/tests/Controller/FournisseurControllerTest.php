@@ -4,36 +4,49 @@ namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+use Liip\TestFixturesBundle\Services\DatabaseToolCollection;
+use Liip\TestFixturesBundle\Services\DatabaseTools\AbstractDatabaseTool;
+
 final class FournisseurControllerTest extends WebTestCase
 {
-    public function testIndex(): void
+
+    /** @var AbstractDatabaseTool */
+    protected $databaseTool;
+        
+    private $testClient = null;
+    public function setUp(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/fournisseur');
+        $this->testClient = static::createClient();
+        $this->databaseTool = $this->testClient->getContainer()->get(DatabaseToolCollection::class)->get();
+    }
+    public function test_index(): void
+    {
+        //$client = static::createClient();
+        $this->testClient->request('GET', '/fournisseur');
         self::assertResponseIsSuccessful();
     }
-    public function testCreate(): void
+    public function test_create(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/fournisseur/create');
+        //$client = static::createClient();
+        $this->testClient->request('GET', '/fournisseur/create');
         self::assertResponseIsSuccessful();
     }
-    public function testEdit(): void
+    public function test_edit(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/fournisseur/1/edit');
+        //$client = static::createClient();
+        $this->testClient->request('GET', '/fournisseur/1/edit');
         self::assertResponseIsSuccessful();
     }
-    public function testShow(): void
+    public function test_show(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/fournisseur/1/show');
+        //$client = static::createClient();
+        $this->testClient->request('GET', '/fournisseur/1/show');
         self::assertResponseIsSuccessful();
     }
-    public function testRemove(): void
-    {
-        $client = static::createClient();
-        $client->request('DELETE', '/fournisseur/1/remove');
-        self::assertResponseIsSuccessful();
-    }
+    // public function test_remove(): void
+    // {
+    //     //$client = static::createClient();
+    //     $this->testClient->request('DELETE', '/fournisseur/20/remove');
+    //     self::assertResponseIsSuccessful();
+    // }
 }

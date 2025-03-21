@@ -53,9 +53,11 @@ class Oxyde
     private ?bool $flagEtat = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?\DateTimeImmutable $creationAt = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?\DateTimeImmutable $modificationAt = null;
 
     /**

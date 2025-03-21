@@ -44,11 +44,11 @@ class OxydeType extends AbstractType
             ->add('save',SubmitType::class,[
                 'label'=>'Enregistrer'
             ])
-            ->addEventListener( FormEvents::POST_SUBMIT, $this->attachTimestamps(...) )
+            ->addEventListener( FormEvents::PRE_SET_DATA, $this->attachTimestamps(...) )
         ;
     }
 
-    public function attachTimestamps(PostSubmitEvent $event):void{
+    public function attachTimestamps($event):void{
         $data=$event->getData();
         if(!($data instanceof Oxyde)){
             return;

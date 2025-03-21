@@ -41,9 +41,11 @@ class MatierePremiere
     private bool $flagEtat = false;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?\DateTimeImmutable $creationAt = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?\DateTimeImmutable $modificationAt = null;
 
     /**

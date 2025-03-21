@@ -72,6 +72,10 @@ class Fournisseur
     {
         return $this->flagEtat;
     }
+    public function getFlagEtat(): ?bool
+    {
+        return $this->flagEtat;
+    }
 
     public function setFlagEtat(bool $flagEtat): static
     {

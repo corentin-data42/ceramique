@@ -57,6 +57,10 @@ class RepositoryQueryAdaptateur implements RepositoryQueryPort{
         $arrMatPremDTO=[];
         foreach($arrMatPrem as $maPrem){
             $maPrem->getQuantite()->initialize();
+            //if($maPrem->getFournisseur()){
+                //dump($maPrem->getFournisseur());
+            //}
+            
             $arrMatPremDTO[]=MatPremDTOMapper::toDTO($maPrem);
         }
         return $arrMatPremDTO;

@@ -4,6 +4,7 @@ use Domain\Common\Object\MatierePremiere;
 use Domain\Common\Object\Collection;
 
 use Application\Repository\DTO\RepOxDTOMapper;
+use Application\Repository\DTO\RepFournisseurDTOMapper;
 use Application\Repository\DTO\RepMatPremDTO;
 
 /**
@@ -56,6 +57,9 @@ class RepMatPremDTOMapper{
         foreach($dto->getOxydes() as $oxydeDTO){
             $oxyde = RepOxDTOMapper::fromDTO($oxydeDTO);
             $matierePremiere->addOxyde($oxyde);
+        }
+        if($dto->getFournisseur()){
+            $matierePremiere->setFournisseur(RepFournisseurDTOMapper::fromDTO($dto->getFournisseur()));
         }
         return $matierePremiere;
     }

@@ -1,6 +1,8 @@
 <?php
 namespace Application\Repository\DTO;
 
+use Application\Repository\DTO\RepFournisseurDTO;
+
 class RepMatPremDTO{
     private ?int $id = null;
     private ?string $nom = null;
@@ -10,8 +12,7 @@ class RepMatPremDTO{
     private ?int $ordre = null;
     private bool $flagEtat = false;
     private ?string $avertissement = null;
-
-
+    private ?RepFournisseurDTO $fournisseur = null;
 
 
     /**
@@ -171,6 +172,26 @@ class RepMatPremDTO{
     {
         $this->avertissement = $avertissement;
 
+        return $this;
+    }
+
+    /**
+     * Get the value of fournisseur
+     */ 
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
+
+    /**
+     * Set the value of fournisseur
+     *
+     * @return  self
+     */ 
+    public function setFournisseur($fournisseur)
+    {   
+        $this->fournisseur = $fournisseur;
+        
         return $this;
     }
 }

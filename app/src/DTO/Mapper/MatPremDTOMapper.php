@@ -7,6 +7,7 @@ use App\Entity\MatierePremiere;
 use Application\Repository\DTO\RepMatPremDTO;
 
 use App\DTO\Mapper\OxydeDTOMapper;
+use App\DTO\Mapper\FournisseurDTOMapper;
 
 
 
@@ -21,6 +22,9 @@ class MatPremDTOMapper{
             ->setAvertissement($dto->getAvertissement())
             ->setFlagEtat($dto->getFlagEtat());
             // ajouter traitement des oxydes
+        if ($dto->getFournisseur()){
+            $matierePremiere->setFournisseur(FournisseurDTOMapper::fromDTO($dto->getFournisseur()));
+        }
         return $matierePremiere;
     }
     public static function toDTO(MatierePremiere $matierePremiere):RepMatPremDTO {
@@ -39,6 +43,11 @@ class MatPremDTOMapper{
             $arrRepOxDto[]=$RepOxDto;
         }
         $dto->setOxydes($arrRepOxDto);
+        if ($matierePremiere->getFournisseur()){
+            $dto->setFournisseur(FournisseurDTOMapper::toDTO($matierePremiere->getFournisseur()));
+        }
+
+
         // ajouter traitement des oxydes
         return $dto;
     }

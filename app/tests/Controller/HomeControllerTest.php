@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types= 1);
 namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -20,14 +20,15 @@ class HomeControllerTest extends WebTestCase{
 
     public function test_authPageIsRestricted(){
         $client = static::createClient();
-        $client->request("GET","/auth");
+        $request = $client->request("GET","/auth");
+        dump($request);
         $this->assertResponseStatusCodeSame(Response::HTTP_UNAUTHORIZED);
     }
-    // public function test_redirectToLogin(){
-    //     $client = static::createClient();
-    //     $client->request("GET","/auth");
-    //     $this->assertResponseRedirects("/login");
-    // }
+    public function test_redirectToLogin(){
+        $client = static::createClient();
+        $client->request("GET","/auth");
+        $this->assertResponseRedirects("/login");
+    }
     /** cree User et make:auth */
 }
 ?>

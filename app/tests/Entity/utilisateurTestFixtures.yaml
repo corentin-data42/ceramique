@@ -1,0 +1,10 @@
+App\Entity\Utilisateur:
+    utilisateur:
+        id: 1
+        nom: nom de test
+        email: deja.en.base@test.fr
+        roles: []
+        password: \@-teZt_Pazzpeaur_l0mt
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        flagEtat: true

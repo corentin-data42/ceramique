@@ -1,0 +1,10 @@
+App\Entity\Utilisateur:
+    utilisateur{1..10}:
+        id: <current()>
+        nom: nom de test <current()>
+        email: deja.en.base<current()>\@test.fr
+        roles: []
+        password: \@-teZt_Pazzpeaur_l0mt
+        creationAt: <(new DateTimeImmutable('now'))>
+        modificationAt: <(new DateTimeImmutable('now'))>
+        flagEtat: true

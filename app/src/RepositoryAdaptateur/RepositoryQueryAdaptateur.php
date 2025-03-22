@@ -7,6 +7,7 @@ use App\Entity\Oxyde;
 use App\Repository\OxydeRepository;
 use App\Repository\MatierePremiereRepository;
 use App\Repository\MatierePremiereOxydeQuantiteRepository;
+use App\Repository\UtilisateurRepository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -17,9 +18,10 @@ use App\DTO\Mapper\MatPremDTOMapper;
 class RepositoryQueryAdaptateur implements RepositoryQueryPort{
     
     public function __construct(
-            private OxydeRepository $oxydeRepository,
-            private MatierePremiereRepository $matierePremiereRepository,
-            private MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository
+        private ?OxydeRepository $oxydeRepository = null,
+        private ?MatierePremiereRepository $matierePremiereRepository = null,
+        private ?MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository =null,
+        private ?UtilisateurRepository $utilisateurRepository = null,
     )
     {
 

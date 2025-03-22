@@ -9,16 +9,22 @@ class Utilisateur{
     protected ?string $nom = null;
     protected ?string $email = null;
     protected ?string $password = null;
+    protected ?bool $flagEtat = null;
+    protected ?Collection $roles = null;
     protected ?Collection $stockMatPre = null;
     protected ?Collection $recettes = null;
 
     
-
+    public function __construct(){
+        $this->roles = new Collection();
+        $this->stockMatPre = new Collection();
+        $this->recettes = new Collection();
+    }
 
     /**
      * Get the value of id
      */ 
-    public function getId()
+    public function getId(): int|null
     {
         return $this->id;
     }
@@ -28,7 +34,7 @@ class Utilisateur{
      *
      * @return  self
      */ 
-    public function setId(int $id)
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -38,7 +44,7 @@ class Utilisateur{
     /**
      * Get the value of nom
      */ 
-    public function getNom()
+    public function getNom(): string|null
     {
         return $this->nom;
     }
@@ -48,7 +54,7 @@ class Utilisateur{
      *
      * @return  self
      */ 
-    public function setNom(string $nom)
+    public function setNom(string $nom): static
     {
         $this->nom = $nom;
 
@@ -58,7 +64,7 @@ class Utilisateur{
     /**
      * Get the value of email
      */ 
-    public function getEmail()
+    public function getEmail(): string|null
     {
         return $this->email;
     }
@@ -68,7 +74,7 @@ class Utilisateur{
      *
      * @return  self
      */ 
-    public function setEmail(string $email)
+    public function setEmail(string $email): static
     {
         $this->email = $email;
 
@@ -78,7 +84,7 @@ class Utilisateur{
     /**
      * Get the value of password
      */ 
-    public function getPassword()
+    public function getPassword(): string|null
     {
         return $this->password;
     }
@@ -88,7 +94,7 @@ class Utilisateur{
      *
      * @return  self
      */ 
-    public function setPassword(string $password)
+    public function setPassword(string $password): static
     {
         $this->password = $password;
 
@@ -98,7 +104,7 @@ class Utilisateur{
     /**
      * Get the value of stockMatPre
      */ 
-    public function getStockMatPre()
+    public function getStockMatPre(): Collection
     {
         return $this->stockMatPre;
     }
@@ -106,9 +112,37 @@ class Utilisateur{
     /**
      * Get the value of recettes
      */ 
-    public function getRecettes()
+    public function getRecettes(): Collection
     {
         return $this->recettes;
+    }
+
+    /**
+     * Get the value of flagEtat
+     */ 
+    public function getFlagEtat(): bool|null
+    {
+        return $this->flagEtat;
+    }
+
+    /**
+     * Set the value of flagEtat
+     *
+     * @return  self
+     */ 
+    public function setFlagEtat(bool $flagEtat): static
+    {
+        $this->flagEtat = $flagEtat;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of roles
+     */ 
+    public function getRoles(): Collection
+    {
+        return $this->roles;
     }
 }
 

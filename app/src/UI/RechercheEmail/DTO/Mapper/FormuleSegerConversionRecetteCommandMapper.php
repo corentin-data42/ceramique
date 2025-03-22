@@ -6,9 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class FormuleSegerConversionRecetteCommandMapper{
     public static function requestToCommandDTO(Request $request):FormuleSegerConversionRecetteCommand {
-        /// constusruire les oxyde ici est les ajouter a lobjet value seger ???
-        // faire appelle database port ici ???
-        /// 
+
         $requestParam = $request->get('formule_seger');
         $oxydes = [];
         foreach($requestParam as $type){

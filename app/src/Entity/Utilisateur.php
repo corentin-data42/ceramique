@@ -40,13 +40,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     #[Assert\NotBlank()]
     #[Assert\PasswordStrength([
-        'minScore' => Assert\PasswordStrength::STRENGTH_VERY_STRONG, // Very strong password required
+        'minScore' => Assert\PasswordStrength::STRENGTH_MEDIUM, // Very strong password required
     ])]
     private ?string $password = null;
 
     #[ORM\Column]
     #[Assert\Type('boolean')]
-    private ?bool $flagEtat = null;
+    private bool $flagEtat = false;
 
     #[ORM\Column]
     #[Assert\NotBlank]

@@ -24,7 +24,7 @@ final class RechercheEmailAdaptateur implements RechercheEmailPort
     private static RechercheEmailAdaptateur $_instance;
     public RepositoryCommandPort $repositoryCommandPort;
     public RepositoryQueryPort $repositoryQueryPort;
-    //private RechercheEmailPort $rechercheEmailPort;
+
 
     private function __construct()
     {
@@ -45,7 +45,7 @@ final class RechercheEmailAdaptateur implements RechercheEmailPort
     }
 
     public function convSegerRecette(FormuleSegerConversionRecetteCommand $command){
-        $handler = new FormuleSegerConversionRecetteCommandHandler($this,$this->repositoryQueryPort);
+        $handler = new FormuleSegerConversionRecetteCommandHandler($this);
         return $handler->handle($command);
     }
     public function getAllOxydeActif(GetAllOxydeActifQuery $query): array

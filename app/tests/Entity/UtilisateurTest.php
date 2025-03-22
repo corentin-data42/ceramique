@@ -25,7 +25,7 @@ class UtilisateurTest extends KernelTestCase{
         $entity = (new Utilisateur())
         ->setEmail("email@test.fr")
         ->setNom("nom de test")
-        ->setPassword("@-teZt_Pazzpeaur_l0mt")
+        ->setPassword("@-teZt_PazzP0rT42")
         ->setFlagEtat(true)
         ->setRoles([])
         ->setCreationAt(new \DateTimeImmutable("now - 1 day"))

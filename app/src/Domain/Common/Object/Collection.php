@@ -17,7 +17,7 @@ class Collection
      * @unshift bool
      * return Static
      */
-    public function add(object $obj, int|null $key = null, bool $unshift = false):static {
+    public function add(object|string $obj, int|null $key = null, bool $unshift = false):static {
         if ($key == null) {
             if($unshift){
                 array_unshift($this->items,$obj);

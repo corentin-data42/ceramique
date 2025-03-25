@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block title %}liste des matières premières{% endblock %}
 
@@ -7,7 +7,7 @@
         liste des matières premières :
     </h1>
 
-    <a class="btn btn-sm btn-primary" href={{ path('matiere_premiere.create')}}>Créer une nouvelle matière première</a>
+    <a class="btn btn-sm btn-primary" href={{ path('admin.matiere_premiere.create')}}>Créer une nouvelle matière première</a>
     <table class="table">
         <thead>
             <tr>
@@ -21,7 +21,7 @@
         {% for matierepremiere in matierespremieres %}
                 <tr>
                     <td>
-                        <a href={{ path('matiere_premiere.show',{ id:matierepremiere.id }) }}>{{ matierepremiere.nom }}</a>
+                        {{ matierepremiere.nom }}
                     </td>
                     <td>
                         {{ matierepremiere.fournisseur ? matierepremiere.fournisseur.nom : '-' }}
@@ -31,8 +31,8 @@
                     </td>
                     <td>
                         <div class="d-flex gap-1">
-                            <a class="btn btn-sm btn-primary" href={{ path('matiere_premiere.edit',{ id:matierepremiere.id })}}>Modifier</a>
-                            <form action="{{ path('matiere_premiere.remove',{ id:matierepremiere.id }) }}" method="post">
+                            <a class="btn btn-sm btn-primary" href={{ path('admin.matiere_premiere.edit',{ id:matierepremiere.id })}}>Modifier</a>
+                            <form action="{{ path('admin.matiere_premiere.remove',{ id:matierepremiere.id }) }}" method="post">
                                 <input type="hidden" name="_method" value="DELETE" />
                                 <button type="submit" class="btn btn-sm btn-danger" >Supprimer</a>
                             </form>

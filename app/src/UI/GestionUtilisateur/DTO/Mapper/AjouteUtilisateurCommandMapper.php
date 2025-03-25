@@ -8,12 +8,14 @@ class AjouteUtilisateurCommandMapper{
 
     public static function utilisateurToCommandDTO(Utilisateur $utilisateur):AjouteUtilisateurCommand {
         
-        $commandDto = new AjouteUtilisateurCommand();
-        $commandDto->setNom($utilisateur->getNom());
-        $commandDto->setEmail($utilisateur->getEmail());
-        $commandDto->setRoles($utilisateur->getRoles());
-        $commandDto->setFlagEtat($utilisateur->getFlagEtat());
-        $commandDto->setPassword($utilisateur->getPassword());
+        $commandDto = new AjouteUtilisateurCommand(
+            $utilisateur->getNom(),
+            $utilisateur->getPassword(),
+            $utilisateur->getEmail(),
+            $utilisateur->getRoles(),
+            $utilisateur->getFlagEtat()
+        );
+
 
         return $commandDto;
     }

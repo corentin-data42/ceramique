@@ -2,6 +2,7 @@
 
 namespace UI\GestionUtilisateur\Form;
 
+use UI\GestionUtilisateur\DTO\UtilisateurDTO;
 use UI\GestionUtilisateur\Enum\Roles;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -62,7 +63,7 @@ class UtilisateurCreateType extends AbstractType
                 'class' => Roles::class,
 
                 'multiple'  => true,
-                'expanded'=>false,
+                'expanded'=>true,
                 'placeholder' => false,
                 ])
 
@@ -88,28 +89,8 @@ class UtilisateurCreateType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         
-        // $resolver->setDefaults([
-        //     'data_class' => DoctrineMatierePremiereOxyde::class,
-        // ]);
-    }
-
-    /**
-     * Get the value of colonneUlm
-     */ 
-    public function getColonneUlm():array
-    {
-        return $this->colonneUlm;
-    }
-
-    /**
-     * Set the value of colonneUlm
-     *
-     * @return  self
-     */ 
-    public function setColonneUlm($colonneUlm):self
-    {
-        $this->colonneUlm = $colonneUlm;
-
-        return $this;
+        $resolver->setDefaults([
+            'data_class' => UtilisateurDTO::class,
+        ]);
     }
 }

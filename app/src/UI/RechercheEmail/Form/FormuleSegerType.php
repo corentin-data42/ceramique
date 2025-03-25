@@ -22,7 +22,6 @@ use phpDocumentor\Reflection\Types\Nullable;
 
 class FormuleSegerType extends AbstractType
 {
-    private array $colonneUlm =[];
     private const _LIBELLE_COLONNE_UML = [
         1=>'basiques',
         2=>'amphoteres',
@@ -79,17 +78,6 @@ class FormuleSegerType extends AbstractType
                 }
             }
         }
-        //dd($builder);
-        
-        /*
-        $builder->add(
-    $builder->create('group1', FormType::class, array('inherit_data' => true))
-        ->add('email', EmailType::class, array())
-        ->add('field1', TextType::class, array())
-);
-        
-        */
-      
 
         $builder->add('button',SubmitType::class,[
             'label'=>'Convertir'
@@ -104,25 +92,5 @@ class FormuleSegerType extends AbstractType
         // $resolver->setDefaults([
         //     'data_class' => DoctrineMatierePremiereOxyde::class,
         // ]);
-    }
-
-    /**
-     * Get the value of colonneUlm
-     */ 
-    public function getColonneUlm():array
-    {
-        return $this->colonneUlm;
-    }
-
-    /**
-     * Set the value of colonneUlm
-     *
-     * @return  self
-     */ 
-    public function setColonneUlm($colonneUlm):self
-    {
-        $this->colonneUlm = $colonneUlm;
-
-        return $this;
     }
 }

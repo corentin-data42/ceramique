@@ -18,25 +18,41 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 
-                <a class="navbar-brand" href="{{ path('home')}}">Céramique</a>
+                <a class="navbar-brand" href="{{ path('admin')}}">Administration</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         {# <li class="nav-item">
-                            <a class="nav-link {{ app.current_route == 'home' ? 'active' : ''}}" href="{{ path('home')}}">Accueil</a>
+                            <a class="nav-link {{ app.current_route == 'admin' ? 'active' : ''}}" href="{{ path('admin')}}">Administration</a>
                         </li> #}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{ app.current_route starts with 'recherche-email.' ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Recherche Email
+                            <a class="nav-link dropdown-toggle {{  (app.current_route starts with 'matiere_premiere.' or app.current_route starts with 'oxyde.') ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Matière Première
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item {{ app.current_route starts with 'recherche-email.' ? 'active' : '' }}" href="{{ path('recherche-email.conv-seger-recette')}}">Conversion Seger > Recette</a></li>
+                                <li><a class="nav-link {{ app.current_route starts with 'admin.matiere_premiere.' ? 'active' : '' }}" href="{{ path('admin.matiere_premiere.index')}}">Matières premières</a></li>
+                                <li><a class="nav-link {{ app.current_route starts with 'admin.fournisseur.' ? 'active' : '' }}" href="{{ path('admin.fournisseur.index')}}">Fournisseur</a></li>
+                                <li><a class="nav-link {{ app.current_route starts with 'admin.oxyde.' ? 'active' : '' }}" href="{{ path('admin.oxyde.index')}}">Oxydes</a></li>
+                               
+                                
                             </ul>
+                            
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{  (app.current_route starts with 'uiadmin.utilisateur.') ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Utilisateur
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="nav-link {{ app.current_route starts with 'uiadmin.utilisateur.index' ? 'active' : '' }}" href="{{ path('uiadmin.utilisateur.index')}}">Liste</a></li>
+                                <li><a class="nav-link {{ app.current_route starts with 'uiadmin.utilisateur.create' ? 'active' : '' }}" href="{{ path('uiadmin.utilisateur.create')}}">Créer nouveau</a></li>
+                            </ul>
+                            
+                        </li>
+                        
                         <li class="nav-item">
-                            <a class="nav-link bg-warning {{ app.current_route == 'app_login' ? 'active' : ''}}" href="{{ path('app_login')}}">Login</a>
+                            <a class="nav-link bg-warning" href="{{ path('app_logout')}}">Logout</a>
                         </li>
                         
                     </ul>

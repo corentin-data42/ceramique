@@ -1,12 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
-{% block title %}Ajouter une matière première{% endblock %}
+{% block title %}Edition de l'a matière première {{ matierepremiere.nom }}{% endblock %}
 
 {% block body %}
-    <h1>Ajouter une matière première</h1>
-
-{{ form_start(form) }}
-<div class="row form-matiere-premiere">
+    <h1>Edition de '{{ matierepremiere.nom }}'</h1>
+    {{ form_start(form) }}
+    <div class="row form-matiere-premiere">
         <div class="col-md-8">
             {{ form_row(form.nom) }}
             {{ form_row(form.nomCour) }}
@@ -22,5 +21,5 @@
             </div>
         </div>
     </div>
-{{ form_end(form) }}
+    {{ form_end(form) }}
 {% endblock %}

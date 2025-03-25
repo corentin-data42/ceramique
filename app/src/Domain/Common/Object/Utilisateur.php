@@ -15,10 +15,21 @@ class Utilisateur{
     protected ?Collection $recettes = null;
 
     
-    public function __construct(){
-        $this->roles = new Collection();
-        $this->stockMatPre = new Collection();
-        $this->recettes = new Collection();
+    public function __construct(
+        ?string $nom = null,
+        ?string $email = null,
+        ?string $password = null,
+        ?bool $flagEtat = null,
+        ?int $id = null,
+        ){
+            $this->nom = $nom;
+            $this->email = $email;
+            $this->password = $password;
+            $this->flagEtat = $flagEtat;
+            $this->id = $id;
+            $this->roles = new Collection();
+            $this->stockMatPre = new Collection();
+            $this->recettes = new Collection();
     }
 
     /**

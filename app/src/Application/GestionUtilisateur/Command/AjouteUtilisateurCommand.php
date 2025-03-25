@@ -4,14 +4,16 @@ namespace Application\GestionUtilisateur\Command;
 
 class AjouteUtilisateurCommand{
 
-    private string $nom;
-    private string $password;
-    private string $email;
-    private array $roles;
-    private bool $flagEtat;
-    public function __construct(){
-        $this->roles = [];
-    }
+
+    public function __construct(
+        protected string $nom,
+        protected string $password,
+        protected string $email,
+        protected array $roles,
+        protected bool $flagEtat,
+    ){}
+    
+
     /**
      * Get the value of nom
      */ 

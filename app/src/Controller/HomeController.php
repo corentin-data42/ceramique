@@ -24,13 +24,12 @@ final class HomeController extends AbstractController
     }
 
 
-    #[Route('/auth', name: 'auth')]
-    ##[IsGranted("ROLE_USER")]
-    public function auth(): Response
+    #[Route('/admin', name: 'admin')]
+    #[IsGranted("ROLE_ADMIN")]
+    public function admin(): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
         //return new Response('<html><body>'.phpinfo().'</body></html>');
-        return $this->render('home/index.html.twig', [
+        return $this->render('admin/index.html.twig', [
         ]);
     }
 }

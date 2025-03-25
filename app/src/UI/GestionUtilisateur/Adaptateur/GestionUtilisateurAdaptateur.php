@@ -14,11 +14,13 @@ final class GestionUtilisateurAdaptateur implements GestionUtilisateurPort
 
 {
     private static GestionUtilisateurAdaptateur $_instance;
-    public RepositoryCommandPort $repositoryCommandPort;
-    public RepositoryQueryPort $repositoryQueryPort;
+
     //private RechercheEmailPort $rechercheEmailPort;
 
-    private function __construct()
+    private function __construct(
+        private RepositoryCommandPort $repositoryCommandPort,
+        private RepositoryQueryPort $repositoryQueryPort,
+    )
     {
 
     }
@@ -29,9 +31,10 @@ final class GestionUtilisateurAdaptateur implements GestionUtilisateurPort
             ?RepositoryQueryPort $repositoryQueryPort=null
         ):GestionUtilisateurAdaptateur{
         if(!isset(self::$_instance)){
-            self::$_instance = new GestionUtilisateurAdaptateur();
-            self::$_instance->repositoryCommandPort = $repositoryCommandPort;
-            self::$_instance->repositoryQueryPort = $repositoryQueryPort;
+            self::$_instance = new GestionUtilisateurAdaptateur(
+                $repositoryCommandPort,
+                $repositoryQueryPort
+        );
         }
         return self::$_instance;
     }
@@ -39,6 +42,13 @@ final class GestionUtilisateurAdaptateur implements GestionUtilisateurPort
     public function ajouteUtilisateur(AjouteUtilisateurCommand $command){
         $handler = new AjouteUtilisateurCommandHandler($this);
         return $handler->handle($command);
+    }
+
+    public function getRepositoryQueryPort():RepositoryQueryPort{
+        return $this->repositoryQueryPort;
+    }
+    public function getRepositoryCommandPort():RepositoryCommandPort{
+        return $this->repositoryCommandPort;
     }
 
 }

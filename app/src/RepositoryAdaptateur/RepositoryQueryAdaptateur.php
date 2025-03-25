@@ -18,10 +18,10 @@ use App\DTO\Mapper\MatPremDTOMapper;
 class RepositoryQueryAdaptateur implements RepositoryQueryPort{
     
     public function __construct(
-        private ?OxydeRepository $oxydeRepository = null,
-        private ?MatierePremiereRepository $matierePremiereRepository = null,
-        private ?MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository =null,
-        private ?UtilisateurRepository $utilisateurRepository = null,
+        private OxydeRepository $oxydeRepository,
+        private MatierePremiereRepository $matierePremiereRepository,
+        private MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository,
+        private UtilisateurRepository $utilisateurRepository,
     )
     {
 

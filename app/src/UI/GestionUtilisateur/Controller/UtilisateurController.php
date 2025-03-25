@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php 
 
 namespace UI\GestionUtilisateur\Controller;
 use App\Entity\Utilisateur;
@@ -15,7 +15,6 @@ use Symfony\Component\Form\Forms;
 use UI\GestionUtilisateur\Adaptateur\GestionUtilisateurAdaptateur;
 use UI\GestionUtilisateur\Form\UtilisateurCreateType;
 use UI\GestionUtilisateur\DTO\Mapper\AjouteUtilisateurCommandMapper;
-
 
 use App\RepositoryAdaptateur\RepositoryQueryAdaptateur;
 use App\RepositoryAdaptateur\RepositoryCommandAdaptateur;
@@ -38,15 +37,28 @@ final class UtilisateurController extends AbstractController {
         
     }
 
+    #[Route('/utilisateur/test', name: 'utilisateur.test')]
+    public function test(): Response{
+        $this->addFlash('success','test');
+        try{
+            throw new \Exception("erreur");
+        }catch( \Exception $e){
+            $this->addFlash('danger','erreur');
+        }
+        //$session = $this->container->get('request_stack')->getSession();
+
+        return $this->render('utilisateur/test.html.twig', [
+        ]);
+    }
+
+
     #[Route('/utilisateur/create', name: 'utilisateur.create')]
-    public function create(Request $request, UtilisateurRepository $utilisateurRepository, UserPasswordHasherInterface $hasher): Response
+    public function create(Request $request,
+        RepositoryQueryAdaptateur $repositoryQueryAdaptateur,
+        RepositoryCommandAdaptateur $repositoryCommandAdaptateur,
+        UserPasswordHasherInterface $hasher
+     ): Response
     {   
-        $repositoryQueryAdaptateur = new RepositoryQueryAdaptateur(
-            utilisateurRepository:$utilisateurRepository,
-        );
-        $repositoryCommandAdaptateur = new RepositoryCommandAdaptateur(
-            utilisateurRepository:$utilisateurRepository,
-        );
 
         $adaptateur = GestionUtilisateurAdaptateur::getInstance($repositoryCommandAdaptateur,$repositoryQueryAdaptateur);
         
@@ -74,13 +86,23 @@ final class UtilisateurController extends AbstractController {
             $mapper=new AjouteUtilisateurCommandMapper();
 
             $command = $mapper->utilisateurToCommandDTO($utilisateur);
-           
-            $adaptateur->ajouteUtilisateur($command);
+            try{
+                $adaptateur->ajouteUtilisateur($command);
+            }catch( \Exception $e){
+                //UniqueConstraintViolationException
+                $this->addFlash('danger','erreur creation utilisateur');
+                return $this->redirectToRoute('utilisateur.create');
+            }
         }
+        
 
         return $this->render('utilisateur/create.html.twig', [
             'form'=>$form,
         ]);
+    }
+
+    private function addError(){
+        $this->addFlash('danger','l\'utilisateur n\'a pas pu etre ajouté');
     }
 }
 

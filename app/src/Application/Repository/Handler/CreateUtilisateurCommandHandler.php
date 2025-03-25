@@ -17,6 +17,7 @@
             
 
             $RepUtilisateurDTO = RepUtilisateurDTOMapper::createCommandToDTO($command);
+            
             $this->databasePort->ajouteUtilisateur($RepUtilisateurDTO, true);
            
         }

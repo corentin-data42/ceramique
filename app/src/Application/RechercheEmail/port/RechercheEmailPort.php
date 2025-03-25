@@ -12,9 +12,10 @@ use Application\RechercheEmail\Query\GetAllOxydeActifQuery;
 interface RechercheEmailPort
 {
     public static function getInstance(RepositoryCommandPort $repCommandPort,RepositoryQueryPort $repQueryPort);
+    public function getRepositoryQueryPort():RepositoryQueryPort;
+    public function getRepositoryCommandPort():RepositoryCommandPort;
     public function convSegerRecette(FormuleSegerConversionRecetteCommand $command);
     //public function save(OxydeDTO $oxyde, bool $flush = false);
     public function getAllOxydeActif(GetAllOxydeActifQuery $query):array;
-    public function getRepositoryQueryPort():RepositoryQueryPort;
-    public function getRepositoryCommandPort():RepositoryCommandPort;
+
 }

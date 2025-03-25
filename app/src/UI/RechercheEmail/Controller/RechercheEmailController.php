@@ -40,28 +40,11 @@ final class RechercheEmailController extends AbstractController
     #[Route('/recherche-email/conversion-formule-seger-recette', name: 'recherche-email.conv-seger-recette')]
     public function convSegerRecette(
             Request $request, 
-            OxydeRepository $oxydeRepository,
-            MatierePremiereRepository $matierePremiereRepository , 
-            MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository
-            
+            RepositoryQueryAdaptateur $repositoryQueryAdaptateur,
+            RepositoryCommandAdaptateur $repositoryCommandAdaptateur
             
         ):Response{
-        /* 
-            initialisation des repository[Query/Command]adaptateur
-            qui utilisent les interfaces repository[Query/Command]Port 
-            definies dans la couche application
-        */
-        $repositoryQueryAdaptateur = new RepositoryQueryAdaptateur(
-            $oxydeRepository,
-            $matierePremiereRepository,
-            $matierePremiereOxydeQuantiteRepository
-        );
-        $repositoryCommandAdaptateur = new RepositoryCommandAdaptateur(
-            $oxydeRepository,
-            $matierePremiereRepository,
-            $matierePremiereOxydeQuantiteRepository
-        );
-
+        
         /* 
             initialisation de RechercheEmailAdaptateur
             qui utilise l'interfaces RechercheEmailPort 

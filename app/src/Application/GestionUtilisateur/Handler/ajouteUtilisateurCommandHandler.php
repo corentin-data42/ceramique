@@ -28,7 +28,7 @@
                 $command->getRoles(),
                 $command->getFlagEtat()
             );
-            $handler = new CreateUtilisateurCommandHandler($this->gestionUtilisateurPort->repositoryCommandPort);
+            $handler = new CreateUtilisateurCommandHandler($this->gestionUtilisateurPort->getRepositoryCommandPort());
             $handler->handle($commandRep);
             dd();
             

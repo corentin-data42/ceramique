@@ -22,24 +22,25 @@ final class RechercheEmailAdaptateur implements RechercheEmailPort
 
 {
     private static RechercheEmailAdaptateur $_instance;
-    public RepositoryCommandPort $repositoryCommandPort;
-    public RepositoryQueryPort $repositoryQueryPort;
 
 
-    private function __construct()
+    private function __construct(
+        private RepositoryCommandPort $repositoryCommandPort,
+        private RepositoryQueryPort $repositoryQueryPort,
+    )
     {
 
     }
 
     // constructeur Nommé pour evité de pouvoir modifier l'instance immuable
     public static function getInstance(
-            ?RepositoryCommandPort $repositoryCommandPort=null,
-            ?RepositoryQueryPort $repositoryQueryPort=null
+            ?RepositoryCommandPort $repositoryCommandPort = null,
+            ?RepositoryQueryPort $repositoryQueryPort = null
         ):RechercheEmailAdaptateur{
         if(!isset(self::$_instance)){
-            self::$_instance = new RechercheEmailAdaptateur();
-            self::$_instance->repositoryCommandPort = $repositoryCommandPort;
-            self::$_instance->repositoryQueryPort = $repositoryQueryPort;
+            self::$_instance = new RechercheEmailAdaptateur($repositoryCommandPort,$repositoryQueryPort);
+            //self::$_instance->repositoryCommandPort = $repositoryCommandPort;
+            //self::$_instance->repositoryQueryPort = $repositoryQueryPort;
         }
         return self::$_instance;
     }

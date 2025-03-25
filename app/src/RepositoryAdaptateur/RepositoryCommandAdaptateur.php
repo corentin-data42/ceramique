@@ -15,10 +15,10 @@ use App\DTO\Mapper\UtilisateurDTOMapper;
 
 class RepositoryCommandAdaptateur implements RepositoryCommandPort{
     public function __construct(
-        private ?OxydeRepository $oxydeRepository = null,
-        private ?MatierePremiereRepository $matierePremiereRepository = null,
-        private ?MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository =null,
-        private ?UtilisateurRepository $utilisateurRepository = null,
+        private OxydeRepository $oxydeRepository,
+        private MatierePremiereRepository $matierePremiereRepository,
+        private MatierePremiereOxydeQuantiteRepository $matierePremiereOxydeQuantiteRepository,
+        private UtilisateurRepository $utilisateurRepository,
     )
     {
         //parent::__construct($registry, DoctrineOxyde::class);

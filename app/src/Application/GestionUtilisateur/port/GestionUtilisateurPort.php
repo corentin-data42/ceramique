@@ -11,6 +11,8 @@ use Application\GestionUtilisateur\Command\AjouteUtilisateurCommand;
 interface GestionUtilisateurPort
 {
     public static function getInstance(RepositoryCommandPort $repCommandPort,RepositoryQueryPort $repQueryPort);
+    public function getRepositoryQueryPort():RepositoryQueryPort;
+    public function getRepositoryCommandPort():RepositoryCommandPort;
     public function ajouteUtilisateur(AjouteUtilisateurCommand $command);
     
 }
